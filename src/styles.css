@@ -29,7 +29,7 @@ html {
   line-height: 30px;
   right: 10%;
   position: absolute;
-  width: 50%;
+  width: 40%;
   text-align: right;
   color: #6c757d!important;
 }
@@ -45,5 +45,11 @@ html {
 
 .blk-footer {
   background-color: #d9d9d9;
+  margin-right: 0!important;
+  margin-left: 0!important;
 }
 
+.blk-footer-row {
+  margin-right: 0!important;
+  margin-left: 0!important;
+}
