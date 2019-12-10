@@ -9,7 +9,23 @@ export class NewOrderNologinComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit() {
   }
 
+  typeClick() {
+    
+  }
+
 }
+
+export const typeElements = [
+  {
+    name: 'Azienda/Negozio',
+    id: 'az'
+  },
+  {
+    name: 'Privato',
+    id:'pr'
+  }
+];

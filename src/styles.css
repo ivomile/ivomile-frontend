@@ -53,3 +53,17 @@ html {
   margin-right: 0!important;
   margin-left: 0!important;
 }
+
+/******************************************/
+/* New order no login                     */
+/******************************************/
+
+.blk-nologinorder {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+}
+
+.blk-ordernol-form {
+  padding-right: 5%!important;
+}
