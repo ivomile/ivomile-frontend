@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './new-order-nologin.component.html',
   styleUrls: ['./new-order-nologin.component.css']
 })
+
 export class NewOrderNologinComponent implements OnInit {
 
   constructor() { }
@@ -19,6 +20,7 @@ export class NewOrderNologinComponent implements OnInit {
 
 }
 
+
 export const typeElements = [
   {
     name: 'Azienda/Negozio',
@@ -29,3 +31,4 @@ export const typeElements = [
     id:'pr'
   }
 ];
+
