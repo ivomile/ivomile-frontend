@@ -1,6 +1,19 @@
-<header class="w3-bar w3-white w3-large">
-  <a routerLink='/home' class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-bed w3-margin-right"></i>Home</a>
-  <a routerLink='/about' class="w3-bar-item w3-button w3-mobile">Chi siamo</a>
-  <a routerLink='/new-order-nologin' class="w3-bar-item w3-button w3-mobile">Spedisci</a>
-  <a href="#contact" class="w3-bar-login w3-button">Area riservata</a>
-</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">IvoMile</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink='/home'>Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/about'>Chi siamo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/new-order-nologin'>Spedisci</a>
+      </li>
+    </ul>
+  </div>
+</nav>
