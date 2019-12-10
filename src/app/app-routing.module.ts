@@ -12,11 +12,11 @@ const routes: Routes = [
   { path: 'home', component: AppComponent },
   //{ path: '', component: AppComponent },
   { path: 'home', component: AppComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'about', component: AboutComponent },
 
 
     // otherwise redirect to home
-    //{ path: '**', redirectTo: '' }
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
