@@ -14,6 +14,8 @@ const routes: Routes = [
   { path: 'home', component: AppComponent },
   { path: 'about', component: AboutComponent },
 
+  
+
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
