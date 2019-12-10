@@ -6,19 +6,16 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './pages/about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: AppComponent },
-  //{ path: '', component: AppComponent },
-  { path: 'home', component: AppComponent },
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
 
-  
-
-
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
