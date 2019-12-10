@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './pages/about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HomeComponent } from './pages/home/home.component';
     HeaderComponent, 
     AboutComponent, 
     FooterComponent, 
-    HomeComponent 
+    HomeComponent,
+    NewOrderNologinComponent
   ],
 
   bootstrap:    [ AppComponent ]

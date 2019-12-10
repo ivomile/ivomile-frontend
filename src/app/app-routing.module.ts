@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'new-order-nologin', component: NewOrderNologinComponent },
+
 
     // otherwise redirect to home
     { path: '**', component: HomeComponent }
