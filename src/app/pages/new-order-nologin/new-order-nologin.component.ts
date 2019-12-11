@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NewOrderNologinComponent implements OnInit {
+  typeElements = typeElements;
+
+  selectedType: string = '';
+  selectTypeChangeHandler (event: any) 
+  {
+    this.selectedType = event.target.value;
+  }
+
+
 
   constructor() { }
 
