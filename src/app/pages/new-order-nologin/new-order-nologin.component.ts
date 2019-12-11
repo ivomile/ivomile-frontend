@@ -9,12 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class NewOrderNologinComponent implements OnInit {
   typeElements = typeElements;
 
-  selectedType: string = '';
+  selectedType: string = 'Azienda/Negozio';
+  addressIdentical: string = 'yes';
+
   selectTypeChangeHandler (event: any) 
   {
     this.selectedType = event.target.value;
   }
 
+ addressIdentical (event: any) 
+  {
+    this.addressIdentical = event.target.value;
+  }
 
 
   constructor() { }
