@@ -127,6 +127,7 @@
 					</div>
 				</div>
 			</div>
+
 		</form>
 	</div>
 
@@ -179,8 +180,6 @@
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 
@@ -297,82 +296,243 @@
 	</div>
 
 
-	<div class="col-md-8 order-md-3 blk-ordernol-form">
-		<h4 class="mb-3">Destinatario</h4>
+	<!-- Pacco -->
+	<div class="col-md-8 order-md-4 blk-ordernol-form">
+		<h4 class="mb-3">Pacco</h4>
 		<hr class="mb-4">
-		<div class="custom-control custom-checkbox">
-			<input type="checkbox" class="custom-control-input" id="same-address">
-			<label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-		</div>
-		<div class="custom-control custom-checkbox">
-			<input type="checkbox" class="custom-control-input" id="save-info">
-			<label class="custom-control-label" for="save-info">Save this information for next time</label>
-		</div>
-		<hr class="mb-4">
+		<form class="needs-validation" novalidate>
 
-		<h4 class="mb-3">Payment</h4>
-    <!-- Rounded switch -->
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
-    
-		<div class="d-block my-3">
-			<div class="custom-control custom-radio">
-				<input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-				<label class="custom-control-label" for="credit">Credit card</label>
-			</div>
-			<div class="custom-control custom-radio">
-				<input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-				<label class="custom-control-label" for="debit">Debit card</label>
-			</div>
-			<div class="custom-control custom-radio">
-				<input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-				<label class="custom-control-label" for="paypal">PayPal</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6 mb-3">
-				<label for="cc-name">Name on card</label>
-				<input type="text" class="form-control" id="cc-name" placeholder="" required>
-				<small class="text-muted">Full name as displayed on card</small>
-				<div class="invalid-feedback">
-					Name on card is required
+			<div class="row">
+				<div class="col-md-5 mb-3">
+					<label for="type">Tipo*</label>
+					<select class="custom-select d-block w-100" id="type" (change)="selectTypeRecvChangeHandler($event)" required>
+            <option *ngFor="let package of packageElements">{{package.name}}</option>
+          </select>
 				</div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<label for="cc-number">Credit card number</label>
-				<input type="text" class="form-control" id="cc-number" placeholder="" required>
-				<div class="invalid-feedback">
-					Credit card number is required
+
+			<div class="row">
+				<div class="col-md-3 mb-3">
+					<label for="firstname">Altezza</label>
+					<input type="text" class="form-control" id="username" placeholder="Mario" required>
+					<div class="invalid-feedback" style="width: 100%;">
+						Nome richiesto.
+					</div>
+				</div>
+
+				<div class="col-md-3 mb-3">
+					<label for="lastname">Lunghezza</label>
+					<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
+					<div class="invalid-feedback" style="width: 100%;">
+						Your username is required.
+					</div>
+				</div>
+
+				<div class="col-md-3 mb-3">
+					<label for="lastname">Larghezza</label>
+					<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
+					<div class="invalid-feedback" style="width: 100%;">
+						Your username is required.
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 mb-3">
-				<label for="cc-expiration">Expiration</label>
-				<input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-				<div class="invalid-feedback">
-					Expiration date required
+
+			<div class="row">
+				<div class="col-md-3 mb-3">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="same-address">
+						<label class="custom-control-label" for="same-address">Impilabile</label>
+					</div>
+				</div>
+
+				<div class="col-md-3 mb-3">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="same-address">
+						<label class="custom-control-label" for="same-address">Forma irregolare</label>
+					</div>
+				</div>
+
+				<div class="col-md-3 mb-3">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="same-address">
+						<label class="custom-control-label" for="same-address">Capovolgibile</label>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-3 mb-3">
-				<label for="cc-cvv">CVV</label>
-				<input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-				<div class="invalid-feedback">
-					Security code required
+
+			<div class="row">
+				<div class="col-md-9 mb-3">
+					<label for="mail">Note</label>
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					<div class="invalid-feedback" style="width: 100%;">
+						Nome richiesto.
+					</div>
 				</div>
 			</div>
-		</div>
-		<hr class="mb-4">
-		<button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-
-
-
-
+		</form>
 	</div>
+
+
+	<!-- Servizio -->
+	<div class="col-md-8 order-md-4 blk-ordernol-form">
+		<h4 class="mb-3">Servizio</h4>
+		<hr class="mb-4">
+		<form class="needs-validation" novalidate>
+
+			<div>
+				<div class="row">
+					<div class="col-md-2 mb-3">
+						<label for="type">Fascia oraria di ritiro</label>
+					</div>
+
+					<div class="col-md-4 mb-3">
+						<label for="type">Data</label>
+						<input type="date" class="form-control" id="lastname" placeholder="Rossi" required>
+				  </div>
+
+						<div class="col-md-2 mb-3">
+							<label for="type">Dalle</label>
+							<select class="custom-select d-block w-100" id="type" required>
+            <option *ngFor="let time of timeElements">{{time.name}}</option>
+          </select>
+						</div>
+
+						<div class="col-md-2 mb-3">
+							<label for="type">Alle</label>
+							<select class="custom-select d-block w-100" id="type" required>
+            <option *ngFor="let time of timeElements">{{time.name}}</option>
+          </select>
+						</div>
+			</div>
+
+					<hr class="mb-4">
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-3 mb-3">
+						<label for="firstname">Altezza</label>
+						<input type="text" class="form-control" id="username" placeholder="Mario" required>
+						<div class="invalid-feedback" style="width: 100%;">
+							Nome richiesto.
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<label for="lastname">Lunghezza</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
+						<div class="invalid-feedback" style="width: 100%;">
+							Your username is required.
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<label for="lastname">Larghezza</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
+						<div class="invalid-feedback" style="width: 100%;">
+							Your username is required.
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 mb-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="same-address">
+							<label class="custom-control-label" for="same-address">Impilabile</label>
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="same-address">
+							<label class="custom-control-label" for="same-address">Forma irregolare</label>
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="same-address">
+							<label class="custom-control-label" for="same-address">Capovolgibile</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-9 mb-3">
+						<label for="mail">Note</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						<div class="invalid-feedback" style="width: 100%;">
+							Nome richiesto.
+						</div>
+					</div>
+				</div>
+		</form>
+	</div>
+
+
+	<!-- Pagamento -->
+	<div class="col-md-8 order-md-4 blk-ordernol-form">
+		<h4 class="mb-3">Pagamento</h4>
+		<hr class="mb-4">
+		<form class="needs-validation" novalidate>
+
+			<div class="d-block my-3">
+				<div class="custom-control custom-radio">
+					<input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+					<label class="custom-control-label" for="credit">Credit card</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+					<label class="custom-control-label" for="debit">Debit card</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+					<label class="custom-control-label" for="paypal">PayPal</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<label for="cc-name">Name on card</label>
+					<input type="text" class="form-control" id="cc-name" placeholder="" required>
+					<small class="text-muted">Full name as displayed on card</small>
+					<div class="invalid-feedback">
+						Name on card is required
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="cc-number">Credit card number</label>
+					<input type="text" class="form-control" id="cc-number" placeholder="" required>
+					<div class="invalid-feedback">
+						Credit card number is required
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 mb-3">
+					<label for="cc-expiration">Expiration</label>
+					<input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+					<div class="invalid-feedback">
+						Expiration date required
+					</div>
+				</div>
+				<div class="col-md-3 mb-3">
+					<label for="cc-cvv">CVV</label>
+					<input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+					<div class="invalid-feedback">
+						Security code required
+					</div>
+				</div>
+			</div>
+			<hr class="mb-4">
+			<button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+		</form>
+	</div>
+
+
 	<!-- Order recap -->
-	<div class="col-md-4 order-md-1 mb-4">
+	<div class="col-md-4 order-md-1 mb-4" id="blk-order-recap">
 		<h4 class="d-flex justify-content-between align-items-center mb-3">
 			<span class="text-muted">La tua spedizione</span>
 		</h4>

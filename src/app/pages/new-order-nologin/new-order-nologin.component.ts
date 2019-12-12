@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class NewOrderNologinComponent implements OnInit {
   typeElements = typeElements;
+  packageElements = packageElements;
+  timeElements = timeElements;
 
   selectedType: string = 'Azienda/Negozio';
   selectedTypeRecv: string = 'Privato';
@@ -54,3 +56,71 @@ export const typeElements = [
   }
 ];
 
+export const packageElements = [
+  {
+    name: 'Pacco',
+    id: 'pac'
+  },
+  {
+    name: 'Cassetta',
+    id:'cas'
+  },
+  {
+    name: 'Busta',
+    id:'bus'
+  }
+];
+
+
+export const timeElements = [
+  {
+    name: '8:00',
+    id: '8'
+  },
+  {
+    name: '9:00',
+    id: '8'
+  },
+  {
+    name: '10:00',
+    id: '8'
+  },
+  {
+    name: '11:00',
+    id: '8'
+  },
+  {
+    name: '12:00',
+    id: '8'
+  },
+  {
+    name: '13:00',
+    id: '8'
+  },
+  {
+    name: '14:00',
+    id: '8'
+  },
+  {
+    name: '15:00',
+    id: '8'
+  },
+  {
+    name: '16:00',
+    id: '8'
+  },
+  {
+    name: '17:00',
+    id: '8'
+  },
+  {
+    name: '18:00',
+    id: '8'
+  },
+  {
+    name: '19:00',
+    id: '8'
+  },
+  
+  
+];
