@@ -403,70 +403,99 @@
             <option *ngFor="let time of timeElements">{{time.name}}</option>
           </select>
 						</div>
-			</div>
+					</div>
+				</div>
+
+				<hr class="mb-4">
+
+				<div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label for="type">Fascia oraria di consegna</label>
+						</div>
+
+						<div class="col-md-4 mb-3">
+							<label for="type">Data</label>
+							<input type="date" class="form-control" id="lastname" placeholder="Rossi" required>
+				  </div>
+
+							<div class="col-md-2 mb-3">
+								<label for="type">Dalle</label>
+								<select class="custom-select d-block w-100" id="type" required>
+            <option *ngFor="let time of timeElements">{{time.name}}</option>
+          </select>
+							</div>
+
+							<div class="col-md-2 mb-3">
+								<label for="type">Alle</label>
+								<select class="custom-select d-block w-100" id="type" required>
+            <option *ngFor="let time of timeElements">{{time.name}}</option>
+          </select>
+							</div>
+						</div>
+					</div>
 
 					<hr class="mb-4">
-				</div>
 
 
-				<div class="row">
-					<div class="col-md-3 mb-3">
-						<label for="firstname">Altezza</label>
-						<input type="text" class="form-control" id="username" placeholder="Mario" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Nome richiesto.
+					<div class="row">
+						<div class="col-md-3 mb-3">
+							<label for="firstname">Altezza</label>
+							<input type="text" class="form-control" id="username" placeholder="Mario" required>
+							<div class="invalid-feedback" style="width: 100%;">
+								Nome richiesto.
+							</div>
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<label for="lastname">Lunghezza</label>
+							<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
+							<div class="invalid-feedback" style="width: 100%;">
+								Your username is required.
+							</div>
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<label for="lastname">Larghezza</label>
+							<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
+							<div class="invalid-feedback" style="width: 100%;">
+								Your username is required.
+							</div>
 						</div>
 					</div>
 
-					<div class="col-md-3 mb-3">
-						<label for="lastname">Lunghezza</label>
-						<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Your username is required.
+					<div class="row">
+						<div class="col-md-3 mb-3">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="same-address">
+								<label class="custom-control-label" for="same-address">Impilabile</label>
+							</div>
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="same-address">
+								<label class="custom-control-label" for="same-address">Forma irregolare</label>
+							</div>
+						</div>
+
+						<div class="col-md-3 mb-3">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="same-address">
+								<label class="custom-control-label" for="same-address">Capovolgibile</label>
+							</div>
 						</div>
 					</div>
 
-					<div class="col-md-3 mb-3">
-						<label for="lastname">Larghezza</label>
-						<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Your username is required.
+					<div class="row">
+						<div class="col-md-9 mb-3">
+							<label for="mail">Note</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<div class="invalid-feedback" style="width: 100%;">
+								Nome richiesto.
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-3 mb-3">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="same-address">
-							<label class="custom-control-label" for="same-address">Impilabile</label>
-						</div>
-					</div>
-
-					<div class="col-md-3 mb-3">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="same-address">
-							<label class="custom-control-label" for="same-address">Forma irregolare</label>
-						</div>
-					</div>
-
-					<div class="col-md-3 mb-3">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="same-address">
-							<label class="custom-control-label" for="same-address">Capovolgibile</label>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-9 mb-3">
-						<label for="mail">Note</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-						<div class="invalid-feedback" style="width: 100%;">
-							Nome richiesto.
-						</div>
-					</div>
-				</div>
 		</form>
 	</div>
 
