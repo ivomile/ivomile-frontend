@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Components
 import { AppComponent } from './app.component';
@@ -64,6 +65,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
@@ -111,6 +113,10 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
     ScrollingModule
   ],
 
+  entryComponents: [
+    SignInDialogComponent
+  ],
+
   declarations: [ 
     AppComponent, 
     HeaderComponent, 
@@ -120,6 +126,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
     NewOrderNologinComponent,
     SignInDialogComponent
   ],
+
+  
 
   bootstrap:    [ AppComponent ]
 })
