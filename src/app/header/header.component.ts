@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MaterialModule } from '../material.module';
+
 
 @Component({
   selector: 'app-header',
@@ -11,5 +13,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
