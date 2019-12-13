@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.component' 
+import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.component';
+
 
 
 @Component({

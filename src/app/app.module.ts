@@ -16,7 +16,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
-import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component' 
+import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 
 
 //Material imports
@@ -126,8 +126,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
     AboutComponent, 
     FooterComponent, 
     HomeComponent,
+    SignInDialogComponent,
     NewOrderNologinComponent,
-    SignInDialogComponent
   ],
 
   
