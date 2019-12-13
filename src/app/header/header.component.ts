@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  password: string;
+  email: string;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   openLoginDialog(): void {
-    const dialogRef = this.dialog.open(SignInDialogComponent, {
-      width: '400px',
-      data: {email: this.email}
-    });
+    const dialogRef = this.dialog.open(SignInDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -26,7 +27,5 @@ export class HeaderComponent implements OnInit {
       
     
     });
-
-
-}
+  }
 }
