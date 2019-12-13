@@ -11,6 +11,11 @@ import { AboutComponent } from './pages/about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
+import { Headerv2Component } from './headerv2/headerv2.component'
+import { MaterialModule } from './material.module'
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 
 @NgModule({
@@ -18,7 +23,8 @@ import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-no
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule 
+    AppRoutingModule ,
+    MatToolbarModule
   ],
 
   declarations: [ 
@@ -27,7 +33,8 @@ import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-no
     AboutComponent, 
     FooterComponent, 
     HomeComponent,
-    NewOrderNologinComponent
+    NewOrderNologinComponent,
+    Headerv2Component
   ],
 
   bootstrap:    [ AppComponent ]
