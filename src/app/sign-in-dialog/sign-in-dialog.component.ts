@@ -9,13 +9,14 @@ import {ErrorStateMatcher} from '@angular/material/core';
   styleUrls: [ 'sign-in-dialog.component.css' ]
 })
 export class SignInDialogComponent implements OnInit {
+
 // per gli errori dell'input della mail
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
-      constructor(
+  
+   constructor(
     public dialogRef: MatDialogRef<SignInDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 

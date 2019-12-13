@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.component' 
 
 
 @Component({
@@ -11,7 +13,7 @@ export class HeaderComponent implements OnInit {
   password: string;
   email: string;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
