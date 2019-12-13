@@ -9,16 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-//Components
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { AboutComponent } from './pages/about/about.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
-import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
-
-
 //Material imports
 import {A11yModule} from '@angular/cdk/a11y';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -62,6 +52,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+//Components
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { AboutComponent } from './pages/about/about.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
+import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
+import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
 
 
 
@@ -128,6 +128,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
     HomeComponent,
     SignInDialogComponent,
     NewOrderNologinComponent,
+    OrderRecapNologinComponent,
   ],
 
   

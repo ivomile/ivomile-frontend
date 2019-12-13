@@ -1,0 +1,33 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+#recap-heading {
+  padding-top: 10px;
+  background-color: #d4d4d4;
+  padding-bottom: 20px;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+#print-label {
+  padding-top: 10px;
+}
+
+.tracking-card {
+  text-align: center;
+  width: 20%;
+  left: 30%;
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
