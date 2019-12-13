@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material.module';
-
 
 @Component({
   selector: 'app-header',
@@ -14,5 +12,21 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(SignInDialogComponent, {
+      width: '400px',
+      data: {email: this.email}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+  
+      this.email = result.email 
+       this.password = result.password// per estrarre le informazioni dal dialog
+      
+    
+    });
+
+
+}
 }
