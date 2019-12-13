@@ -7,18 +7,21 @@
 
 <div class="text-centered" id="print-label">
 	Stampa l'etichetta da apporre sul pacco
-	<button mat-raised-button color="primary">Stampa etichetta</button>
+	<button mat-raised-button color="primary" class="button-print">Stampa etichetta</button>
 </div>
 
 
 <div class="tracking-numbers">
 	<mat-card class="tracking-card" color="primary">
-		<mat-card-title style>{{tracking_sender}}</mat-card-title>
+		<mat-card-title>{{tracking_sender}}</mat-card-title>
 		Numero tracking mittente
 	</mat-card>
 
 	<mat-card class="tracking-card" color="primary">
-		<mat-card-title>{{tracking_sender}}</mat-card-title>
+		<mat-card-title>{{tracking_receiver}}</mat-card-title>
 		Numero tracking destinatario
 	</mat-card>
 </div>
+
+<p class="register-link"><a  routerLink="/new-user">Registrati</a> per tenere sempre sotto controllo tutte le tue spedizioni<p>
+

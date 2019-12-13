@@ -2,14 +2,8 @@
   max-width: 400px;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
 #recap-heading {
   padding-top: 10px;
-  background-color: #d4d4d4;
   padding-bottom: 20px;
 }
 
@@ -23,11 +17,25 @@
 
 .tracking-card {
   text-align: center;
-  width: 20%;
-  left: 30%;
-  float: left;
+  width: 200px;
+  display: inline;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.tracking-numbers {
+  height: 150px;
+  margin-left: 30%;
+  margin-right: auto;
+  display: flex;
+}
+
+.register-link {
+  text-align: center;
+}
+
+.button-print {
+  margin-left: 10px;
 }
