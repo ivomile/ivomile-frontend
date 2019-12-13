@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {HttpClientModule} from '@angular/common/http';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
 //Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -132,4 +135,5 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
+
 export class AppRoutingModule { }
