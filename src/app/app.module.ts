@@ -114,7 +114,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    HttpClientModule
   ],
 
   entryComponents: [
@@ -138,5 +139,3 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
-
-export class AppRoutingModule { }

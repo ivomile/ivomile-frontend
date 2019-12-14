@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from 'app/material.module';
 
 @Component({
   selector: 'app-about',
