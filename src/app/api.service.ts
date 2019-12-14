@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+// @ts-ignore
 @Injectable({
   providedIn: 'root'
 })
 
-const localUrl = 'assets/data/smartphone.json';
+const localUrl = 'http://localhost:8080/deliveries/check';
 
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  getSmartphone() {
+  getOrders() {
     return this.http.get(localUrl);
   }
 }

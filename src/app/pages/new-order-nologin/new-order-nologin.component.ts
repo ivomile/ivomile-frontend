@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-new-order-nologin',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NewOrderNologinComponent implements OnInit {
+
+  orders: any = [];
+  constructor(private api: ApiService) {}
+
   typeElements = typeElements;
   packageElements = packageElements;
   timeElements = timeElements;
@@ -18,6 +23,20 @@ export class NewOrderNologinComponent implements OnInit {
   selectTypeChangeHandler (event: any) 
   {
     this.selectedType = event.target.value;
+    this.getOrders();
+  }
+
+  getOrders() {
+    this.api.getOrders()
+        .subscribe(data => {
+          for (const d of (data as any)) {
+            this.orders.push({
+              name: d.name,
+              price: d.price
+            });
+          }
+          console.log(this.orders);
+        });
   }
 
   selectTypeRecvChangeHandler (event: any) 
@@ -30,9 +49,6 @@ export class NewOrderNologinComponent implements OnInit {
     this.addressIdentical = event.target.value;
     this.addressIdentical = event.currentTarget.checked;
   }
-
-
-  constructor() { }
 
 
   ngOnInit() {
