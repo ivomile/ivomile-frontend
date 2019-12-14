@@ -8,7 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
 import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
-
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'new-order-nologin', component: NewOrderNologinComponent },
   { path: 'order-recap-nologin', component: OrderRecapNologinComponent },
+  { path: 'sign-up', component: SignUpComponent },
 
   
 

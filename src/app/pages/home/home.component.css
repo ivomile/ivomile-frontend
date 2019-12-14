@@ -1,14 +1,50 @@
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.home-banner {
+    height: 200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
+.tracking-card {
+  width: 400px;
+  height: 160px;
+  margin-top: 20px;
+  background-color: grey;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  float:left; 
+  display:block;
 }
+
+.button-newclient {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  left: 0;
+  width: 300px;
+  height: 60px;
+}
+
+.newclient-card {
+  width: 400px;
+  height:160px;
+  margin-top: 20px;
+  background-color: grey;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  float:left; 
+  display:block;
+}
+
+.form-tracking {
+  margin-bottom: 20px;
+}
+
+.form-tracking-input {
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.tracking-button {
+  margin-right: 30px;
+}
+

@@ -3,3 +3,13 @@
 }
 
 .lh-condensed { line-height: 1.25; }
+
+.button-signup {
+  margin-left: 10px;
+}
+
+.signup-invite {
+  border-top: 50
+  px;
+  position: relative;
+}

@@ -62,6 +62,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 
 
@@ -129,6 +130,7 @@ import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-re
     SignInDialogComponent,
     NewOrderNologinComponent,
     OrderRecapNologinComponent,
+    SignUpComponent,
   ],
 
   
