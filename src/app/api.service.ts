@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
-const localUrl = 'http://localhost:8080/deliveries/check';
+const localUrl = 'http://ec2-35-180-201-108.eu-west-3.compute.amazonaws.com:8080/deliveries';
 
 export class ApiService {
   constructor(private http: HttpClient) { }
