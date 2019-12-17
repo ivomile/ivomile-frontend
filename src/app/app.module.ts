@@ -63,6 +63,7 @@ import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-no
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { ApiService } from './api.service';
 
 
 
@@ -120,6 +121,10 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
   entryComponents: [
     SignInDialogComponent
+  ],
+
+  providers: [
+    ApiService
   ],
 
   declarations: [ 
