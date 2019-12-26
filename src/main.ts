@@ -1,6 +1,7 @@
 import './polyfills';
 
 import { enableProdMode } from '@angular/core';
+import 'hammerjs';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';

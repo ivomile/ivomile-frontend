@@ -5,6 +5,8 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 
 class DialogData {
+    email: any;
+    password: any;
 }
 
 @Component({
@@ -15,6 +17,7 @@ class DialogData {
 export class SignInDialogComponent implements OnInit {
 
 // per gli errori dell'input della mail
+    emailFormControl: any;
 
    constructor(
     public dialogRef: MatDialogRef<SignInDialogComponent>,

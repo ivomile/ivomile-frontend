@@ -1,28 +1,35 @@
 <div class="row blk-nologinorder">
-  <div class="signup-invite"> Registrati per inserire le tue spedizioni più velocemente e controllare lo stato
-  <button mat-raised-button routerLink="/sign-up" color="primary" class="button-signup"> Registrati</button>
-  </div>
+
 
 	<!-- Mittente -->
 	<div class="col-md-8 order-md-1 blk-ordernol-form">
+		<div class="row">
+			<div class="col-md-8 mb-3">
+				<div class="signup-invite"> Registrati per inserire le tue spedizioni più velocemente e controllare lo stato
+					<button mat-raised-button routerLink="/sign-up" color="primary" class="button-signup"> Registrati</button>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
 		<h4 class="mb-3">Mittente</h4>
 		<hr class="mb-4">
 		<form class="needs-validation" novalidate>
 
 			<div class="row">
-				<div class="col-md-5 mb-3">
+				<div class="col-md-8 mb-3">
 					<label for="type">Tipo*</label>
 					<select class="custom-select d-block w-100" id="type" (change)="selectTypeChangeHandler($event)" required>
-            <option *ngFor="let type of typeElements">{{type.name}}</option>
-          </select>
+						<option *ngFor="let type of typeElements">{{type.name}}</option>
+					</select>
 				</div>
 			</div>
 
 			<div *ngIf="selectedType=='Privato'">
 				<div class="row">
 					<div class="col-md-5 mb-3">
-						<label for="firstname">Nome</label>
-						<input type="text" class="form-control" id="username" placeholder="Mario" required>
+						<label for="usernameprv">Nome</label>
+						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -41,7 +48,7 @@
 			<div *ngIf="selectedType=='Azienda/Negozio'">
 				<div class="row">
 					<div class="col-md-5 mb-3">
-						<label for="firstname">Ragione sociale</label>
+						<label for="username">Ragione sociale</label>
 						<input type="text" class="form-control" id="username" placeholder="abc Srl" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
@@ -50,7 +57,7 @@
 
 					<div class="col-md-5 mb-3">
 						<label for="fiscalcode">Partita IVA</label>
-						<input type="text" class="form-control" id="username" placeholder="XXXXXX" required>
+						<input type="text" class="form-control" id="fiscalcode" placeholder="XXXXXX" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
