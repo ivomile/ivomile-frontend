@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 //Material imports
@@ -64,7 +64,7 @@ import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component
 import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { ApiService } from './api.service';
-
+import {AuthInterceptor} from "./interceptor";
 
 
 @NgModule({
@@ -124,8 +124,14 @@ import { ApiService } from './api.service';
   ],
 
   providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    },
     ApiService
   ],
+
 
   declarations: [ 
     AppComponent, 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../../api.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  orders: any = [];
+  constructor(private api: ApiService) {}
 
   ngOnInit() {
+    this.loginApi();
+  }
+
+  loginApi() {
+    this.api.login().subscribe(data => {
+        for (const d of (data as any)) {
+            this.orders.push({
+                name: d.name,
+                price: d.price
+            });
+        }
+        console.log(this.orders);
+    });
+
   }
 
 }
+

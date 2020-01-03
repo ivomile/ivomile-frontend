@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-new-order-nologin',
@@ -19,6 +20,7 @@ export class NewOrderNologinComponent implements OnInit {
   selectedType: string = 'Azienda/Negozio';
   selectedTypeRecv: string = 'Privato';
   addressIdentical: boolean = true;
+  formData: any;
 
   selectTypeChangeHandler (event: any) 
   {
@@ -54,10 +56,9 @@ export class NewOrderNologinComponent implements OnInit {
   ngOnInit() {
   }
 
-  typeClick() {
-    
+  onSubmit(form: NgForm) {
+    console.log('Your form data : ', form.value);
   }
-
 }
 
 

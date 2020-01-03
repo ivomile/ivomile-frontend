@@ -2,25 +2,19 @@
 
 
 	<!-- Mittente -->
+	<form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" >
 	<div class="col-md-8 order-md-1 blk-ordernol-form">
-		<div class="row">
-			<div class="col-md-8 mb-3">
-				<div class="signup-invite"> Registrati per inserire le tue spedizioni più velocemente e controllare lo stato
-					<button mat-raised-button routerLink="/sign-up" color="primary" class="button-signup"> Registrati</button>
-				</div>
-			</div>
-		</div>
 		<br>
 		<br>
 		<h4 class="mb-3">Mittente</h4>
 		<hr class="mb-4">
-		<form class="needs-validation" novalidate>
+
 
 			<div class="row">
 				<div class="col-md-8 mb-3">
-					<label for="type">Tipo*</label>
-					<select class="custom-select d-block w-100" id="type" (change)="selectTypeChangeHandler($event)" required>
-						<option *ngFor="let type of typeElements">{{type.name}}</option>
+					<label for="type1">Tipo*</label>
+					<select class="custom-select d-block w-100" id="type1" (change)="selectTypeChangeHandler($event)"required>
+						<option *ngFor="let type of typeElements" [ngValue]="type">{{type.name}}</option>
 					</select>
 				</div>
 			</div>
@@ -29,15 +23,15 @@
 				<div class="row">
 					<div class="col-md-5 mb-3">
 						<label for="usernameprv">Nome</label>
-						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" required>
+						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" name="usernameprv" ngModel>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
 					</div>
 
 					<div class="col-md-5 mb-3">
-						<label for="lastname">Cognome</label>
-						<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
+						<label for="lastname1">Cognome</label>
+						<input type="text" class="form-control" id="lastname1" placeholder="Rossi" name="lastname1" required ngModel>
 						<div class="invalid-feedback" style="width: 100%;">
 							Your username is required.
 						</div>
@@ -138,7 +132,7 @@
 				</div>
 			</div>
 
-		</form>
+
 	</div>
 
 	<!-- Punto di ritiro -->
@@ -197,7 +191,7 @@
 	<div class="col-md-8 order-md-3 blk-ordernol-form">
 		<h4 class="mb-3">Destinatario</h4>
 		<hr class="mb-4">
-		<form class="needs-validation" novalidate>
+
 
 			<div class="row">
 				<div class="col-md-5 mb-3">
@@ -302,7 +296,7 @@
 					</div>
 				</div>
 			</div>
-		</form>
+
 	</div>
 
 
@@ -310,7 +304,7 @@
 	<div class="col-md-8 order-md-4 blk-ordernol-form">
 		<h4 class="mb-3">Pacco</h4>
 		<hr class="mb-4">
-		<form class="needs-validation" novalidate>
+
 
 			<div class="row">
 				<div class="col-md-5 mb-3">
@@ -379,7 +373,7 @@
 					</div>
 				</div>
 			</div>
-		</form>
+
 	</div>
 
 
@@ -387,7 +381,7 @@
 	<div class="col-md-8 order-md-4 blk-ordernol-form">
 		<h4 class="mb-3">Servizio</h4>
 		<hr class="mb-4">
-		<form class="needs-validation" novalidate>
+
 
 			<div>
 				<div class="row">
@@ -506,7 +500,6 @@
 							</div>
 						</div>
 					</div>
-		</form>
 	</div>
 
 
@@ -514,7 +507,6 @@
 	<div class="col-md-8 order-md-4 blk-ordernol-form">
 		<h4 class="mb-3">Pagamento</h4>
 		<hr class="mb-4">
-		<form class="needs-validation" novalidate>
 
 			<div class="d-block my-3">
 				<div class="custom-control custom-radio">
@@ -565,9 +557,11 @@
 				</div>
 			</div>
 			<hr class="mb-4">
-			<button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-		</form>
-	</div>
+
+		</div>
+
+		<input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout">
+	</form>
 
 
 	<!-- Order recap -->
@@ -609,7 +603,6 @@
 				<strong>$20</strong>
 			</li>
 		</ul>
-
     <a mat-raised-button color="primary" routerLink="/order-recap-nologin">Ordina</a>
 
 	</div>
