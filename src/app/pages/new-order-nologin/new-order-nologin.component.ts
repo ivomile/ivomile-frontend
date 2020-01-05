@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
-import {NgForm} from "@angular/forms";
+import { FormGroup, NgForm, Validators } from "@angular/forms";
+import { Customer } from "../../shared/Customer";
+import { Delivery } from "../../shared/Delivery";
+import { Address } from "../../shared/Address";
+import { Receiver } from "../../shared/Receiver";
+import { Parcel } from "../../shared/Parcel";
+import {Dimension} from "../../shared/Dimension";
 
 @Component({
   selector: 'app-new-order-nologin',
@@ -10,8 +16,38 @@ import {NgForm} from "@angular/forms";
 
 export class NewOrderNologinComponent implements OnInit {
 
-  orders: any = [];
-  constructor(private api: ApiService) {}
+    orders: any = [];
+    delivery: Delivery;
+    customer: Customer;
+    address: Address;
+    form: FormGroup;
+    parcel:Parcel[]=[];
+    receiver: Receiver;
+    tmpParcel: Parcel;
+    dimension: Dimension;
+
+    constructor(private api: ApiService) {
+      this.delivery = new Delivery();
+      this.customer = new Customer();
+      this.address = new Address();
+      this.receiver = new Receiver();
+      this.dimension = new Dimension();
+
+      this.parcel = new Array<Parcel>();
+      this.tmpParcel = new Parcel();
+      this.tmpParcel.dimension = this.dimension;
+      this.delivery.packages = this.parcel;
+
+      this.receiver.address = this.address;
+      this.delivery.receiver = this.receiver;
+
+      this.customer.address = this.address;
+      this.delivery.customer = this.customer;
+  }
+
+  private prepareSave(): Delivery {
+    return new Delivery().deserialize(this.form.value);
+  }
 
   typeElements = typeElements;
   packageElements = packageElements;
@@ -25,7 +61,7 @@ export class NewOrderNologinComponent implements OnInit {
   selectTypeChangeHandler (event: any) 
   {
     this.selectedType = event.target.value;
-    this.getOrders();
+    // this.getOrders();
   }
 
   getOrders() {
@@ -41,6 +77,15 @@ export class NewOrderNologinComponent implements OnInit {
         });
   }
 
+  createOrders() {
+    this.api.createOrder(this.delivery)
+        .subscribe(data => {
+          for (const d of (data as any)) {
+            console.log(d);
+          }
+        });
+  }
+
   selectTypeRecvChangeHandler (event: any) 
   {
     this.selectedTypeRecv = event.target.value;
@@ -52,12 +97,20 @@ export class NewOrderNologinComponent implements OnInit {
     this.addressIdentical = event.currentTarget.checked;
   }
 
-
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-    console.log('Your form data : ', form.value);
+    console.log('Your form data : ', this.delivery);
+    this.createOrders();
+
+  }
+
+  addParcel(form: NgForm) {
+    this.tmpParcel.dimension = this.dimension;
+    this.delivery.packages.push(this.tmpParcel);
+    this.tmpParcel = new Parcel();
+    this.dimension = new Dimension();
   }
 }
 

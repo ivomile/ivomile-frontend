@@ -13,7 +13,7 @@
 			<div class="row">
 				<div class="col-md-8 mb-3">
 					<label for="type1">Tipo*</label>
-					<select class="custom-select d-block w-100" id="type1" (change)="selectTypeChangeHandler($event)"required>
+					<select class="custom-select d-block w-100" id="type1" (change)="selectTypeChangeHandler($event)" required>
 						<option *ngFor="let type of typeElements" [ngValue]="type">{{type.name}}</option>
 					</select>
 				</div>
@@ -23,15 +23,15 @@
 				<div class="row">
 					<div class="col-md-5 mb-3">
 						<label for="usernameprv">Nome</label>
-						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" name="usernameprv" ngModel>
+						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" name="usernameprv" required [(ngModel)]="delivery.receiver.name">
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
 					</div>
 
 					<div class="col-md-5 mb-3">
-						<label for="lastname1">Cognome</label>
-						<input type="text" class="form-control" id="lastname1" placeholder="Rossi" name="lastname1" required ngModel>
+						<label for="lastnameprv">Cognome</label>
+						<input type="text" class="form-control" id="lastnameprv" placeholder="Rossi" name="lastnameprv" required [(ngModel)]="delivery.receiver.lastname">
 						<div class="invalid-feedback" style="width: 100%;">
 							Your username is required.
 						</div>
@@ -42,8 +42,8 @@
 			<div *ngIf="selectedType=='Azienda/Negozio'">
 				<div class="row">
 					<div class="col-md-5 mb-3">
-						<label for="username">Ragione sociale</label>
-						<input type="text" class="form-control" id="username" placeholder="abc Srl" required>
+						<label for="usernamemerchant">Ragione sociale</label>
+						<input type="text" class="form-control" id="usernamemerchant" name = "usernamemerchant" placeholder="abc Srl" required ngModel>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -51,7 +51,7 @@
 
 					<div class="col-md-5 mb-3">
 						<label for="fiscalcode">Partita IVA</label>
-						<input type="text" class="form-control" id="fiscalcode" placeholder="XXXXXX" required>
+						<input type="text" class="form-control" id="fiscalcode" name="fiscalcode" placeholder="XXXXXX" required ngModel>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -62,15 +62,15 @@
 			<div class="row">
 				<div class="col-md-5 mb-3">
 					<label for="mail">Mail</label>
-					<input type="text" class="form-control" id="username" placeholder="mail" required>
+					<input type="text" class="form-control" id="mail" placeholder="mail" name="mail" required [(ngModel)]="delivery.receiver.email">
 					<div class="invalid-feedback" style="width: 100%;">
 						Nome richiesto.
 					</div>
 				</div>
 
 				<div class="col-md-5 mb-3">
-					<label for="lastname">Telefono</label>
-					<input type="text" class="form-control" id="phone" placeholder="Rossi" required>
+					<label for="phone2">Telefono</label>
+					<input type="text" class="form-control" id="phone2" placeholder="Rossi" name="phone2" required ngModel>
 					<div class="invalid-feedback" style="width: 100%;">
 						Your username is required.
 					</div>
@@ -79,8 +79,8 @@
 
 			<div class="row">
 				<div class="col-md-2 mb-3">
-					<label for="address_cap">CAP</label>
-					<input type="text" class="form-control" id="address_cap" placeholder="1234 Main St" required>
+					<label for="address_cap1">CAP</label>
+					<input type="text" class="form-control" id="address_cap1" name = "address_cap1" placeholder="1234 Main St" required ngModel>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
@@ -301,81 +301,93 @@
 
 
 	<!-- Pacco -->
-	<div class="col-md-8 order-md-4 blk-ordernol-form">
-		<h4 class="mb-3">Pacco</h4>
-		<hr class="mb-4">
+	<form #myform1 = "ngForm" (ngSubmit)="addParcel(myform1)" >
+		<div class="col-md-8 order-md-4 blk-ordernol-form">
+			<h4 class="mb-3">Pacco</h4>
+			<hr class="mb-4">
 
 
-			<div class="row">
-				<div class="col-md-5 mb-3">
-					<label for="type">Tipo*</label>
-					<select class="custom-select d-block w-100" id="type" (change)="selectTypeRecvChangeHandler($event)" required>
-            <option *ngFor="let package of packageElements">{{package.name}}</option>
-          </select>
+				<div class="row">
+					<div class="col-md-5 mb-3">
+						<label for="type">Tipo*</label>
+						<select class="custom-select d-block w-100" id="type" (change)="selectTypeRecvChangeHandler($event)" required>
+				<option *ngFor="let package of packageElements">{{package.name}}</option>
+			  </select>
+					</div>
 				</div>
+
+				<div class="row">
+					<div class="col-md-3 mb-3">
+						<label for="weight">Peso</label>
+						<input type="text" class="form-control" id="weight" placeholder="weight" name="weight" [(ngModel)]="tmpParcel.weight" required>
+						<div class="invalid-feedback" style="width: 100%;">
+							Nome richiesto.
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<label for="height">Altezza</label>
+						<input type="text" class="form-control" id="height" placeholder="height" name="height" [(ngModel)]="dimension.height" required>
+						<div class="invalid-feedback" style="width: 100%;">
+							Your username is required.
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<label for="length">Lunghezza</label>
+						<input type="text" class="form-control" id="length" placeholder="length" name="length" [(ngModel)]="dimension.depth" required>
+						<div class="invalid-feedback" style="width: 100%;">
+							Your username is required.
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<label for="width">Larghezza</label>
+						<input type="text" class="form-control" id="width" placeholder="width" name="width" [(ngModel)]="dimension.width" required>
+						<div class="invalid-feedback" style="width: 100%;">
+							Your username is required.
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3 mb-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="stackable">
+							<label class="custom-control-label" for="same-address">Impilabile</label>
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="irregularshape">
+							<label class="custom-control-label" for="same-address">Forma irregolare</label>
+						</div>
+					</div>
+
+					<div class="col-md-3 mb-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="revertable" >
+							<label class="custom-control-label" for="same-address">Capovolgibile</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-9 mb-3">
+						<label for="description">Note</label>
+						<textarea class="form-control" id="description" rows="3" name="width" [(ngModel)]="tmpParcel.description"  ></textarea>
+						<div class="invalid-feedback" style="width: 100%;">
+							Nome richiesto.
+						</div>
+					</div>
+				</div>
+			<input class="btn btn-primary" type="submit" value="Add">
 			</div>
 
-			<div class="row">
-				<div class="col-md-3 mb-3">
-					<label for="firstname">Altezza</label>
-					<input type="text" class="form-control" id="username" placeholder="Mario" required>
-					<div class="invalid-feedback" style="width: 100%;">
-						Nome richiesto.
-					</div>
-				</div>
+	</form>
 
-				<div class="col-md-3 mb-3">
-					<label for="lastname">Lunghezza</label>
-					<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
-					<div class="invalid-feedback" style="width: 100%;">
-						Your username is required.
-					</div>
-				</div>
-
-				<div class="col-md-3 mb-3">
-					<label for="lastname">Larghezza</label>
-					<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
-					<div class="invalid-feedback" style="width: 100%;">
-						Your username is required.
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-3 mb-3">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="same-address">
-						<label class="custom-control-label" for="same-address">Impilabile</label>
-					</div>
-				</div>
-
-				<div class="col-md-3 mb-3">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="same-address">
-						<label class="custom-control-label" for="same-address">Forma irregolare</label>
-					</div>
-				</div>
-
-				<div class="col-md-3 mb-3">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="same-address">
-						<label class="custom-control-label" for="same-address">Capovolgibile</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-9 mb-3">
-					<label for="mail">Note</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-					<div class="invalid-feedback" style="width: 100%;">
-						Nome richiesto.
-					</div>
-				</div>
-			</div>
-
-	</div>
-
+		<br>
 
 	<!-- Servizio -->
 	<div class="col-md-8 order-md-4 blk-ordernol-form">
@@ -397,15 +409,15 @@
 						<div class="col-md-2 mb-3">
 							<label for="type">Dalle</label>
 							<select class="custom-select d-block w-100" id="type" required>
-            <option *ngFor="let time of timeElements">{{time.name}}</option>
-          </select>
+							<option *ngFor="let time of timeElements">{{time.name}}</option>
+						  	</select>
 						</div>
 
 						<div class="col-md-2 mb-3">
 							<label for="type">Alle</label>
 							<select class="custom-select d-block w-100" id="type" required>
-            <option *ngFor="let time of timeElements">{{time.name}}</option>
-          </select>
+							<option *ngFor="let time of timeElements">{{time.name}}</option>
+						  </select>
 						</div>
 					</div>
 				</div>
@@ -421,20 +433,20 @@
 						<div class="col-md-4 mb-3">
 							<label for="type">Data</label>
 							<input type="date" class="form-control" id="lastname" placeholder="Rossi" required>
-				  </div>
+				  		</div>
 
 							<div class="col-md-2 mb-3">
 								<label for="type">Dalle</label>
 								<select class="custom-select d-block w-100" id="type" required>
-            <option *ngFor="let time of timeElements">{{time.name}}</option>
-          </select>
+								<option *ngFor="let time of timeElements">{{time.name}}</option>
+							  </select>
 							</div>
 
 							<div class="col-md-2 mb-3">
 								<label for="type">Alle</label>
 								<select class="custom-select d-block w-100" id="type" required>
-            <option *ngFor="let time of timeElements">{{time.name}}</option>
-          </select>
+								<option *ngFor="let time of timeElements">{{time.name}}</option>
+							  </select>
 							</div>
 						</div>
 					</div>
@@ -570,37 +582,12 @@
 			<span class="text-muted">La tua spedizione</span>
 		</h4>
 		<ul class="list-group mb-3">
-			<li class="list-group-item d-flex justify-content-between lh-condensed">
+			<li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of parcel">
 				<div>
-					<h6 class="my-0">Product name</h6>
-					<small class="text-muted">Brief description</small>
+					<h6 class="my-0">
+						{{item.description}}  [{{item.weight}} : {{item.dimension.width}} : {{item.dimension.height}} : {{item.dimension.depth}}]
+					</h6>
 				</div>
-				<span class="text-muted">$12</span>
-			</li>
-			<li class="list-group-item d-flex justify-content-between lh-condensed">
-				<div>
-					<h6 class="my-0">Second product</h6>
-					<small class="text-muted">Brief description</small>
-				</div>
-				<span class="text-muted">$8</span>
-			</li>
-			<li class="list-group-item d-flex justify-content-between lh-condensed">
-				<div>
-					<h6 class="my-0">Third item</h6>
-					<small class="text-muted">Brief description</small>
-				</div>
-				<span class="text-muted">$5</span>
-			</li>
-			<li class="list-group-item d-flex justify-content-between bg-light">
-				<div class="text-success">
-					<h6 class="my-0">Promo code</h6>
-					<small>EXAMPLECODE</small>
-				</div>
-				<span class="text-success">-$5</span>
-			</li>
-			<li class="list-group-item d-flex justify-content-between">
-				<span>Total (USD)</span>
-				<strong>$20</strong>
 			</li>
 		</ul>
     <a mat-raised-button color="primary" routerLink="/order-recap-nologin">Ordina</a>

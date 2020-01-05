@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map } from "rxjs/operators";
+import {Delivery} from "./shared/Delivery";
+
 
 const localUrl = 'http://localhost:8080/deliveries';
 // const localUrl = 'http://blinklastmile-env.tygfir3fqy.eu-west-3.elasticbeanstalk.com/deliveries';
 
 const loginUrl = 'http://localhost:8080/login';
+const createOrder = 'http://localhost:8080/deliveries';
 
 
 // @ts-ignore
@@ -32,6 +35,12 @@ export class ApiService {
       userName: this.model.username,
       password: this.model.password
     }, {headers})
+
+  }
+
+  createOrder(delivery: Delivery) {
+    const headers = new HttpHeaders({ Authorization: "Basic YWRtaW46cGFzc3dvcmQ="});
+    return this.http.post(createOrder, delivery, {headers})
   }
 
 }

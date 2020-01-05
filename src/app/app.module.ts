@@ -64,7 +64,8 @@ import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component
 import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { ApiService } from './api.service';
-import {AuthInterceptor} from "./interceptor";
+import { AuthInterceptor } from "./interceptor";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -116,7 +117,8 @@ import {AuthInterceptor} from "./interceptor";
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgSelectModule
   ],
 
   entryComponents: [
