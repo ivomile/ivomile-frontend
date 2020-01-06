@@ -5,25 +5,77 @@
 	<form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" >
 	<div class="col-md-8 order-md-1 blk-ordernol-form">
 		<br>
-		<br>
 		<h4 class="mb-3">Mittente</h4>
+
 		<hr class="mb-4">
 
+<!--		<mat-accordion #accordion="matAccordion" [multi]="true">-->
+<!--			<mat-expansion-panel [expanded]="expandedV1">-->
+
+<!--				<mat-expansion-panel-header>-->
+<!--					<mat-panel-title>-->
+<!--						Personal data-->
+<!--					</mat-panel-title>-->
+<!--					<mat-panel-description>-->
+<!--						Type your name and age-->
+<!--					</mat-panel-description>-->
+<!--				</mat-expansion-panel-header>-->
+
+<!--				<mat-action-row>-->
+<!--					<mat-form-field>-->
+<!--						<mat-panel-description>Tipo</mat-panel-description>-->
+<!--						<br>-->
+<!--						<mat-select class="custom-select d-block w-100" (selectionChange)="selectTypeChangeHandler($event)" name="type1" [(ngModel)]="delivery.customer.type">-->
+<!--							<mat-option *ngFor="let type of typeElements" [value]="type.name">-->
+<!--								{{type.name}}-->
+<!--							</mat-option>-->
+<!--						</mat-select>-->
+<!--					</mat-form-field>-->
+<!--				</mat-action-row>-->
+
+<!--				<mat-action-row>-->
+<!--					<mat-form-field *ngIf="selectedType=='Privato'">-->
+<!--						<mat-panel-description>Nome</mat-panel-description>-->
+<!--						<input matInput type="text" class="form-control" id="username20" name="username20" [(ngModel)]="delivery.customer.name" required>-->
+<!--					</mat-form-field>-->
+<!--				</mat-action-row>-->
+
+<!--			</mat-expansion-panel>-->
+
+<!--			<mat-expansion-panel [expanded]="expandedV1">-->
+<!--				<mat-expansion-panel-header>-->
+<!--					<mat-panel-title>-->
+<!--						Self aware panel-->
+<!--					</mat-panel-title>-->
+<!--					<mat-panel-description>-->
+<!--						Currently I am {{panelOpenState ? 'open' : 'closed'}}-->
+<!--					</mat-panel-description>-->
+<!--				</mat-expansion-panel-header>-->
+<!--				<mat-form-field>-->
+<!--					<mat-select placeholder="type" (change)="selectTypeChangeHandler($event)" name="type1" [(ngModel)]="delivery.customer.type">-->
+<!--						<mat-option *ngFor="let type of typeElements" [value]="type.name">-->
+<!--							{{type.name}}-->
+<!--						</mat-option>-->
+<!--					</mat-select>-->
+<!--				</mat-form-field>-->
+<!--				<p>I'm visible because I am open</p>-->
+<!--			</mat-expansion-panel>-->
+<!--		</mat-accordion>-->
 
 			<div class="row">
 				<div class="col-md-8 mb-3">
 					<label for="type1">Tipo*</label>
-					<select class="custom-select d-block w-100" id="type1" (change)="selectTypeChangeHandler($event)" required>
-						<option *ngFor="let type of typeElements" [ngValue]="type">{{type.name}}</option>
+					<select class="custom-select d-block w-100" id="type1" (change)="selectTypeChangeHandler($event)" name="type1" [(ngModel)]="delivery.customer.type" required>
+						<option *ngFor="let type of typeElements">{{type.name}}</option>
 					</select>
 				</div>
 			</div>
 
-			<div *ngIf="selectedType=='Privato'">
+			<div *ngIf="delivery.customer.type=='Privato'">
 				<div class="row">
 					<div class="col-md-5 mb-3">
 						<label for="usernameprv">Nome</label>
-						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" name="usernameprv" required [(ngModel)]="delivery.receiver.name">
+						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" name="usernameprv" [(ngModel)]="delivery.customer.name" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -31,7 +83,7 @@
 
 					<div class="col-md-5 mb-3">
 						<label for="lastnameprv">Cognome</label>
-						<input type="text" class="form-control" id="lastnameprv" placeholder="Rossi" name="lastnameprv" required [(ngModel)]="delivery.receiver.lastname">
+						<input type="text" class="form-control" id="lastnameprv" placeholder="Rossi" name="lastnameprv" [(ngModel)]="delivery.customer.lastname" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Your username is required.
 						</div>
@@ -39,11 +91,11 @@
 				</div>
 			</div>
 
-			<div *ngIf="selectedType=='Azienda/Negozio'">
+			<div *ngIf="delivery.customer.type=='Azienda/Negozio'">
 				<div class="row">
 					<div class="col-md-5 mb-3">
 						<label for="usernamemerchant">Ragione sociale</label>
-						<input type="text" class="form-control" id="usernamemerchant" name = "usernamemerchant" placeholder="abc Srl" required ngModel>
+						<input type="text" class="form-control" id="usernamemerchant" name="usernamemerchant" placeholder="abc Srl" [(ngModel)]="delivery.customer.businessName" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -51,7 +103,7 @@
 
 					<div class="col-md-5 mb-3">
 						<label for="fiscalcode">Partita IVA</label>
-						<input type="text" class="form-control" id="fiscalcode" name="fiscalcode" placeholder="XXXXXX" required ngModel>
+						<input type="text" class="form-control" id="fiscalcode" name="fiscalcode" placeholder="XXXXXX" [(ngModel)]="delivery.customer.vatNumber" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -61,8 +113,8 @@
 
 			<div class="row">
 				<div class="col-md-5 mb-3">
-					<label for="mail">Mail</label>
-					<input type="text" class="form-control" id="mail" placeholder="mail" name="mail" required [(ngModel)]="delivery.receiver.email">
+					<label for="mail2">Mail</label>
+					<input type="text" class="form-control" id="mail2" placeholder="yourmail@yourdomain.it" name="mail2" required [(ngModel)]="delivery.customer.email">
 					<div class="invalid-feedback" style="width: 100%;">
 						Nome richiesto.
 					</div>
@@ -70,7 +122,7 @@
 
 				<div class="col-md-5 mb-3">
 					<label for="phone2">Telefono</label>
-					<input type="text" class="form-control" id="phone2" placeholder="Rossi" name="phone2" required ngModel>
+					<input type="text" class="form-control" id="phone2" placeholder="+39333223993" name="phone2" [(ngModel)]="delivery.customer.phoneNumber" required>
 					<div class="invalid-feedback" style="width: 100%;">
 						Your username is required.
 					</div>
@@ -79,24 +131,24 @@
 
 			<div class="row">
 				<div class="col-md-2 mb-3">
-					<label for="address_cap1">CAP</label>
-					<input type="text" class="form-control" id="address_cap1" name = "address_cap1" placeholder="1234 Main St" required ngModel>
+					<label for="address_cap2">CAP</label>
+					<input type="text" class="form-control" id="address_cap2" name="address_cap2" placeholder="20020" [(ngModel)]="delivery.customer.address.cap">
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
 				</div>
 
 				<div class="col-md-6 mb-3">
-					<label for="address_city">Città</label>
-					<input type="text" class="form-control" id="address_city" placeholder="1234 Main St" required>
+					<label for="address_city2">Città</label>
+					<input type="text" class="form-control" id="address_city2" name="address_city2" placeholder="Milan" [(ngModel)]="delivery.customer.address.city" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
 				</div>
 
 				<div class="col-md-2 mb-3">
-					<label for="address_prov">Provincia</label>
-					<input type="text" class="form-control" id="address_prov" placeholder="1234 Main St" required>
+					<label for="address_prov2">Provincia</label>
+					<input type="text" class="form-control" id="address_prov2" placeholder="MI" name="address_prov2" [(ngModel)]="delivery.customer.address.province" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
@@ -106,16 +158,16 @@
 
 			<div class="row">
 				<div class="col-md-8 mb-3">
-					<label for="address">Via/Piazza</label>
-					<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+					<label for="address_street2">Via/Piazza</label>
+					<input type="text" class="form-control" id="address_street2" placeholder="Via paravia" name="address_street2" [(ngModel)]="delivery.customer.address.street" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
 				</div>
 
 				<div class="col-md-2 mb-3">
-					<label for="address">N.</label>
-					<input type="text" class="form-control" id="address_n" placeholder="1234 Main St" required>
+					<label for="civic_number2">N.</label>
+					<input type="text" class="form-control" id="civic_number2" placeholder="45" name="civic_number2" [(ngModel)]="delivery.customer.address.civicNumber" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
@@ -126,176 +178,179 @@
 			<div class="row">
 				<div class="col-md-10 mb-3">
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="same-address"  (change)="addressIdenticalHandler($event)" checked>
+						<input type="checkbox" class="custom-control-input" id="same-address-consumer" (change)="addressIdenticalHandler($event)" checked>
 						<label class="custom-control-label" for="same-address">Indirizzo di fatturazione uguale all'indirizzo di ritiro della merce</label>
 					</div>
 				</div>
 			</div>
-
-
-	</div>
+		</div>
 
 	<!-- Punto di ritiro -->
-	<div class="col-md-8 order-md-2 blk-ordernol-form">
-		<div *ngIf="addressIdentical==false">
-			<h4 class="mb-3">Punto di ritiro</h4>
-			<hr class="mb-4">
+<!--	<div class="col-md-8 order-md-2 blk-ordernol-form">-->
+<!--		<div *ngIf="addressIdentical==false">-->
+<!--			<h4 class="mb-3">Punto di ritiro</h4>-->
+<!--			<hr class="mb-4">-->
 
-			<div class="row">
-				<div class="col-md-2 mb-3">
-					<label for="address_cap">CAP</label>
-					<input type="text" class="form-control" id="address_cap" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
-				</div>
+<!--			<div class="row">-->
+<!--				<div class="col-md-2 mb-3">-->
+<!--					<label for="address_cap">CAP</label>-->
+<!--					<input type="text" class="form-control" id="address_cap" placeholder="1234 Main St" required>-->
+<!--					<div class="invalid-feedback">-->
+<!--						Please enter your shipping address.-->
+<!--					</div>-->
+<!--				</div>-->
 
-				<div class="col-md-6 mb-3">
-					<label for="address_city">Città</label>
-					<input type="text" class="form-control" id="address_city" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
-				</div>
+<!--				<div class="col-md-6 mb-3">-->
+<!--					<label for="address_city">Città</label>-->
+<!--					<input type="text" class="form-control" id="address_city" placeholder="1234 Main St" required>-->
+<!--					<div class="invalid-feedback">-->
+<!--						Please enter your shipping address.-->
+<!--					</div>-->
+<!--				</div>-->
 
-				<div class="col-md-2 mb-3">
-					<label for="address_prov">Provincia</label>
-					<input type="text" class="form-control" id="address_prov" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
-				</div>
-			</div>
+<!--				<div class="col-md-2 mb-3">-->
+<!--					<label for="address_prov">Provincia</label>-->
+<!--					<input type="text" class="form-control" id="address_prov" placeholder="1234 Main St" required>-->
+<!--					<div class="invalid-feedback">-->
+<!--						Please enter your shipping address.-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
 
-			<div class="row">
-				<div class="col-md-8 mb-3">
-					<label for="address">Via/Piazza</label>
-					<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
-				</div>
+<!--			<div class="row">-->
+<!--				<div class="col-md-8 mb-3">-->
+<!--					<label for="address">Via/Piazza</label>-->
+<!--					<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>-->
+<!--					<div class="invalid-feedback">-->
+<!--						Please enter your shipping address.-->
+<!--					</div>-->
+<!--				</div>-->
 
-				<div class="col-md-2 mb-3">
-					<label for="address">N.</label>
-					<input type="text" class="form-control" id="address_n" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!--				<div class="col-md-2 mb-3">-->
+<!--					<label for="address">N.</label>-->
+<!--					<input type="text" class="form-control" id="address_n" placeholder="1234 Main St" required>-->
+<!--					<div class="invalid-feedback">-->
+<!--						Please enter your shipping address.-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
 
 	<!-- Destinatario -->
 	<div class="col-md-8 order-md-3 blk-ordernol-form">
 		<h4 class="mb-3">Destinatario</h4>
-		<hr class="mb-4">
+		<div class="row">
+			<div class="col-md-8 mb-3">
+				<label for="type2">Tipo*</label>
+				<select class="custom-select d-block w-100" id="type2" (change)="selectTypeChangeHandler($event)" name="type2" [(ngModel)]="delivery.receiver.type" required>
+					<option *ngFor="let type of typeElements">{{type.name}}</option>
+				</select>
+			</div>
+		</div>
 
-
+			<div *ngIf="delivery.receiver.type=='Privato'">
 			<div class="row">
 				<div class="col-md-5 mb-3">
-					<label for="type">Tipo*</label>
-					<select class="custom-select d-block w-100" id="type" (change)="selectTypeRecvChangeHandler($event)" required>
-            <option *ngFor="let type of typeElements">{{type.name}}</option>
-          </select>
-				</div>
-			</div>
-
-			<div *ngIf="selectedTypeRecv=='Privato'">
-				<div class="row">
-					<div class="col-md-5 mb-3">
-						<label for="firstname">Nome</label>
-						<input type="text" class="form-control" id="username" placeholder="Mario" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Nome richiesto.
-						</div>
-					</div>
-
-					<div class="col-md-5 mb-3">
-						<label for="lastname">Cognome</label>
-						<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Your username is required.
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div *ngIf="selectedTypeRecv=='Azienda/Negozio'">
-				<div class="row">
-					<div class="col-md-5 mb-3">
-						<label for="firstname">Ragione sociale</label>
-						<input type="text" class="form-control" id="username" placeholder="abc Srl" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Nome richiesto.
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-5 mb-3">
-					<label for="mail">Mail</label>
-					<input type="text" class="form-control" id="username" placeholder="mail" required>
+					<label for="username2">Nome</label>
+					<input type="text" class="form-control" id="username2" placeholder="Mario" name="username2" [(ngModel)]="delivery.receiver.name" required>
 					<div class="invalid-feedback" style="width: 100%;">
 						Nome richiesto.
 					</div>
 				</div>
 
 				<div class="col-md-5 mb-3">
-					<label for="lastname">Telefono</label>
-					<input type="text" class="form-control" id="phone" placeholder="Rossi" required>
+					<label for="lastname2">Cognome</label>
+					<input type="text" class="form-control" id="lastname2" placeholder="Rossi" name="lastname2" [(ngModel)]="delivery.receiver.lastname" required>
 					<div class="invalid-feedback" style="width: 100%;">
 						Your username is required.
 					</div>
 				</div>
 			</div>
+		</div>
 
-
+		<div *ngIf="delivery.receiver.type=='Azienda/Negozio'">
 			<div class="row">
-				<div class="col-md-8 mb-3">
-					<label for="address">Via/Piazza</label>
-					<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
+				<div class="col-md-5 mb-3">
+					<label for="usernamemerchant2">Ragione sociale</label>
+					<input type="text" class="form-control" id="usernamemerchant2" placeholder="abc Srl" name="usernamemerchant2" [(ngModel)]="delivery.receiver.vatNumber" required>
+					<div class="invalid-feedback" style="width: 100%;">
+						Nome richiesto.
 					</div>
 				</div>
 
-				<div class="col-md-2 mb-3">
-					<label for="address">N.</label>
-					<input type="text" class="form-control" id="address_n" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
+				<div class="col-md-5 mb-3">
+					<label for="fiscalcode_merchant">Partita IVA</label>
+					<input type="text" class="form-control" id="fiscalcode_merchant" name="fiscalcode_merchant" placeholder="XXXXXX" [(ngModel)]="delivery.receiver.businessName" required>
+					<div class="invalid-feedback" style="width: 100%;">
+						Nome richiesto.
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<div class="row">
-				<div class="col-md-2 mb-3">
-					<label for="address_cap">CAP</label>
-					<input type="text" class="form-control" id="address_cap" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
-				</div>
-
-				<div class="col-md-6 mb-3">
-					<label for="address_city">Città</label>
-					<input type="text" class="form-control" id="address_city" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
-				</div>
-
-				<div class="col-md-2 mb-3">
-					<label for="address_prov">Provincia</label>
-					<input type="text" class="form-control" id="address_prov" placeholder="1234 Main St" required>
-					<div class="invalid-feedback">
-						Please enter your shipping address.
-					</div>
+		<div class="row">
+			<div class="col-md-5 mb-3">
+				<label for="mail">Mail</label>
+				<input type="text" class="form-control" id="mail" placeholder="mail" name="mail" required [(ngModel)]="delivery.receiver.email">
+				<div class="invalid-feedback" style="width: 100%;">
+					Nome richiesto.
 				</div>
 			</div>
+
+			<div class="col-md-5 mb-3">
+				<label for="phone1">Telefono</label>
+				<input type="text" class="form-control" id="phone1" placeholder="Rossi" name="phone1" [(ngModel)]="delivery.receiver.phoneNumber" required>
+				<div class="invalid-feedback" style="width: 100%;">
+					Your username is required.
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2 mb-3">
+				<label for="address_cap1">CAP</label>
+				<input type="text" class="form-control" id="address_cap1" name="address_cap1" placeholder="1234 Main St" [(ngModel)]="delivery.receiver.address.cap">
+				<div class="invalid-feedback">
+					Please enter your shipping address.
+				</div>
+			</div>
+
+			<div class="col-md-6 mb-3">
+				<label for="address_city1">Città</label>
+				<input type="text" class="form-control" id="address_city1" name="address_city1" placeholder="1234 Main St" [(ngModel)]="delivery.receiver.address.city" required>
+				<div class="invalid-feedback">
+					Please enter your shipping address.
+				</div>
+			</div>
+
+			<div class="col-md-2 mb-3">
+				<label for="address_prov1">Provincia</label>
+				<input type="text" class="form-control" id="address_prov1" placeholder="1234 Main St" name="address_prov1" [(ngModel)]="delivery.receiver.address.province" required>
+				<div class="invalid-feedback">
+					Please enter your shipping address.
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-8 mb-3">
+				<label for="address_street">Via/Piazza</label>
+				<input type="text" class="form-control" id="address_street" placeholder="1234 Main St" name="address_street" [(ngModel)]="delivery.receiver.address.street" required>
+				<div class="invalid-feedback">
+					Please enter your shipping address.
+				</div>
+			</div>
+
+			<div class="col-md-2 mb-3">
+				<label for="civic_number">N.</label>
+				<input type="text" class="form-control" id="civic_number" placeholder="1234 Main St" name="civic_number" [(ngModel)]="delivery.receiver.address.civicNumber" required>
+				<div class="invalid-feedback">
+					Please enter your shipping address.
+				</div>
+			</div>
+		</div>
 
 	</div>
 
@@ -305,14 +360,12 @@
 		<div class="col-md-8 order-md-4 blk-ordernol-form">
 			<h4 class="mb-3">Pacco</h4>
 			<hr class="mb-4">
-
-
 				<div class="row">
 					<div class="col-md-5 mb-3">
-						<label for="type">Tipo*</label>
-						<select class="custom-select d-block w-100" id="type" (change)="selectTypeRecvChangeHandler($event)" required>
-				<option *ngFor="let package of packageElements">{{package.name}}</option>
-			  </select>
+						<label for="type3">Tipo*</label>
+						<select class="custom-select d-block w-100" id="type3" (change)="selectTypeRecvChangeHandler($event)" name="type3" [(ngModel)]="tmpParcel.type" required>
+							<option *ngFor="let package of packageElements">{{package.name}}</option>
+			  			</select>
 					</div>
 				</div>
 
@@ -350,33 +403,33 @@
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-md-3 mb-3">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="stackable">
-							<label class="custom-control-label" for="same-address">Impilabile</label>
-						</div>
-					</div>
+<!--				<div class="row">-->
+<!--					<div class="col-md-3 mb-3">-->
+<!--						<div class="custom-control custom-checkbox">-->
+<!--							<input type="checkbox" class="custom-control-input" id="stackable">-->
+<!--							<label class="custom-control-label" for="same-address">Impilabile</label>-->
+<!--						</div>-->
+<!--					</div>-->
 
-					<div class="col-md-3 mb-3">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="irregularshape">
-							<label class="custom-control-label" for="same-address">Forma irregolare</label>
-						</div>
-					</div>
+<!--					<div class="col-md-3 mb-3">-->
+<!--						<div class="custom-control custom-checkbox">-->
+<!--							<input type="checkbox" class="custom-control-input" id="irregularshape">-->
+<!--							<label class="custom-control-label" for="same-address">Forma irregolare</label>-->
+<!--						</div>-->
+<!--					</div>-->
 
-					<div class="col-md-3 mb-3">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="revertable" >
-							<label class="custom-control-label" for="same-address">Capovolgibile</label>
-						</div>
-					</div>
-				</div>
+<!--					<div class="col-md-3 mb-3">-->
+<!--						<div class="custom-control custom-checkbox">-->
+<!--							<input type="checkbox" class="custom-control-input" id="revertable" >-->
+<!--							<label class="custom-control-label" for="same-address">Capovolgibile</label>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
 
 				<div class="row">
 					<div class="col-md-9 mb-3">
 						<label for="description">Note</label>
-						<textarea class="form-control" id="description" rows="3" name="width" [(ngModel)]="tmpParcel.description"  ></textarea>
+						<textarea class="form-control" id="description" rows="3" name="width" [(ngModel)]="tmpParcel.description"></textarea>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -387,14 +440,12 @@
 
 	</form>
 
-		<br>
+	<br>
 
 	<!-- Servizio -->
 	<div class="col-md-8 order-md-4 blk-ordernol-form">
 		<h4 class="mb-3">Servizio</h4>
-		<hr class="mb-4">
-
-
+			<hr class="mb-4">
 			<div>
 				<div class="row">
 					<div class="col-md-2 mb-3">
@@ -402,116 +453,63 @@
 					</div>
 
 					<div class="col-md-4 mb-3">
-						<label for="type">Data</label>
-						<input type="date" class="form-control" id="lastname" placeholder="Rossi" required>
-				  </div>
+						<label for="pickupdate">Data</label>
+						<input type="date" class="form-control" id="pickupdate" placeholder="" name="pickupdate" [(ngModel)]="delivery.pickUpDate" required>
+					</div>
 
-						<div class="col-md-2 mb-3">
-							<label for="type">Dalle</label>
-							<select class="custom-select d-block w-100" id="type" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						  	</select>
-						</div>
+					<div class="col-md-2 mb-3">
+						<label for="pickUpHourFrom">Dalle</label>
+						<select class="custom-select d-block w-100" id="pickUpHourFrom" name="pickUpHourFrom" [(ngModel)]="delivery.pickUpHourFrom" required>
+						<option *ngFor="let time of timeElements">{{time.name}}</option>
+						</select>
+					</div>
 
-						<div class="col-md-2 mb-3">
-							<label for="type">Alle</label>
-							<select class="custom-select d-block w-100" id="type" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						  </select>
-						</div>
+					<div class="col-md-2 mb-3">
+						<label for="pickUpHourTo">hourTo</label>
+						<select class="custom-select d-block w-100" id="pickUpHourTo" name="pickUpHourTo" [(ngModel)]="delivery.pickUpHourTo" required>
+						<option *ngFor="let time of timeElements">{{time.name}}</option>
+					  </select>
 					</div>
 				</div>
+			</div>
 
-				<hr class="mb-4">
-
-				<div>
-					<div class="row">
-						<div class="col-md-2 mb-3">
-							<label for="type">Fascia oraria di consegna</label>
-						</div>
-
-						<div class="col-md-4 mb-3">
-							<label for="type">Data</label>
-							<input type="date" class="form-control" id="lastname" placeholder="Rossi" required>
-				  		</div>
-
-							<div class="col-md-2 mb-3">
-								<label for="type">Dalle</label>
-								<select class="custom-select d-block w-100" id="type" required>
-								<option *ngFor="let time of timeElements">{{time.name}}</option>
-							  </select>
-							</div>
-
-							<div class="col-md-2 mb-3">
-								<label for="type">Alle</label>
-								<select class="custom-select d-block w-100" id="type" required>
-								<option *ngFor="let time of timeElements">{{time.name}}</option>
-							  </select>
-							</div>
-						</div>
+			<hr class="mb-4">
+			<div>
+				<div class="row">
+					<div class="col-md-2 mb-3">
+						<label>Fascia oraria di consegna</label>
 					</div>
 
-					<hr class="mb-4">
-
-
-					<div class="row">
-						<div class="col-md-3 mb-3">
-							<label for="firstname">Altezza</label>
-							<input type="text" class="form-control" id="username" placeholder="Mario" required>
-							<div class="invalid-feedback" style="width: 100%;">
-								Nome richiesto.
-							</div>
-						</div>
-
-						<div class="col-md-3 mb-3">
-							<label for="lastname">Lunghezza</label>
-							<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
-							<div class="invalid-feedback" style="width: 100%;">
-								Your username is required.
-							</div>
-						</div>
-
-						<div class="col-md-3 mb-3">
-							<label for="lastname">Larghezza</label>
-							<input type="text" class="form-control" id="lastname" placeholder="Rossi" required>
-							<div class="invalid-feedback" style="width: 100%;">
-								Your username is required.
-							</div>
-						</div>
+					<div class="col-md-4 mb-3">
+						<label for="deliveryDate">Data</label>
+						<input type="date" class="form-control" id="deliveryDate" placeholder="" name="deliveryDate" [(ngModel)]="delivery.deliveryDate" required>
 					</div>
 
-					<div class="row">
-						<div class="col-md-3 mb-3">
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="same-address">
-								<label class="custom-control-label" for="same-address">Impilabile</label>
-							</div>
-						</div>
-
-						<div class="col-md-3 mb-3">
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="same-address">
-								<label class="custom-control-label" for="same-address">Forma irregolare</label>
-							</div>
-						</div>
-
-						<div class="col-md-3 mb-3">
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="same-address">
-								<label class="custom-control-label" for="same-address">Capovolgibile</label>
-							</div>
-						</div>
+					<div class="col-md-2 mb-3">
+						<label for="deliveryHourFrom">Dalle</label>
+						<select class="custom-select d-block w-100" id="deliveryHourFrom" name="deliveryHourFrom" [(ngModel)]="delivery.deliveryHourFrom" required>
+							<option *ngFor="let time of timeElements">{{time.name}}</option>
+						</select>
 					</div>
 
-					<div class="row">
-						<div class="col-md-9 mb-3">
-							<label for="mail">Note</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-							<div class="invalid-feedback" style="width: 100%;">
-								Nome richiesto.
-							</div>
-						</div>
+					<div class="col-md-2 mb-3">
+						<label for="deliveryHourTo">hourTo</label>
+						<select class="custom-select d-block w-100" id="deliveryHourTo" name="deliveryHourTo" [(ngModel)]="delivery.deliveryHourTo" required>
+							<option *ngFor="let time of timeElements">{{time.name}}</option>
+						</select>
 					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-9 mb-3">
+					<label for="deliveryNote">Note</label>
+					<textarea class="form-control" id="deliveryNote" rows="3" name="deliveryNote" [(ngModel)]="delivery.deliveryNote"></textarea>
+					<div class="invalid-feedback" style="width: 100%;">
+						Nome richiesto.
+					</div>
+				</div>
+			</div>
 	</div>
 
 
@@ -519,57 +517,17 @@
 	<div class="col-md-8 order-md-4 blk-ordernol-form">
 		<h4 class="mb-3">Pagamento</h4>
 		<hr class="mb-4">
-
-			<div class="d-block my-3">
-				<div class="custom-control custom-radio">
-					<input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-					<label class="custom-control-label" for="credit">Credit card</label>
-				</div>
-				<div class="custom-control custom-radio">
-					<input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-					<label class="custom-control-label" for="debit">Debit card</label>
-				</div>
-				<div class="custom-control custom-radio">
-					<input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-					<label class="custom-control-label" for="paypal">PayPal</label>
-				</div>
-			</div>
-
 			<div class="row">
 				<div class="col-md-6 mb-3">
-					<label for="cc-name">Name on card</label>
-					<input type="text" class="form-control" id="cc-name" placeholder="" required>
-					<small class="text-muted">Full name as displayed on card</small>
-					<div class="invalid-feedback">
-						Name on card is required
+					<label for="paymentCode">Codice Pagamento</label>
+					<input type="text" class="form-control" id="paymentCode" placeholder="paymentCode" name="paymentCode" [(ngModel)]="delivery.paymentCode" required>
+					<small class="text-muted">Bonus code for one delivery order</small>
+					<div class="invalid-feedback" style="width: 100%;">
+						Your username is required.
 					</div>
-				</div>
-				<div class="col-md-6 mb-3">
-					<label for="cc-number">Credit card number</label>
-					<input type="text" class="form-control" id="cc-number" placeholder="" required>
-					<div class="invalid-feedback">
-						Credit card number is required
-					</div>
+					<small class="text-muted">Bonus code for one delivery order</small>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-3 mb-3">
-					<label for="cc-expiration">Expiration</label>
-					<input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-					<div class="invalid-feedback">
-						Expiration date required
-					</div>
-				</div>
-				<div class="col-md-3 mb-3">
-					<label for="cc-cvv">CVV</label>
-					<input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-					<div class="invalid-feedback">
-						Security code required
-					</div>
-				</div>
-			</div>
-			<hr class="mb-4">
-
 		</div>
 
 		<input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout">

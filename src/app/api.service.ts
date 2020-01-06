@@ -20,7 +20,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getOrders() {
-    return this.http.get(localUrl);
+    const headers = new HttpHeaders({ Authorization: "Basic YWRtaW46cGFzc3dvcmQ="});
+    return this.http.get(localUrl, {headers});
   }
   model: any = {};
 

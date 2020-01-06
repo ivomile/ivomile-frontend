@@ -118,7 +118,9 @@ import { NgSelectModule } from "@ng-select/ng-select";
     PortalModule,
     ScrollingModule,
     HttpClientModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserModule,
+    BrowserAnimationsModule
   ],
 
   entryComponents: [

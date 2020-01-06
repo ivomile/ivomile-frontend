@@ -8,6 +8,9 @@ export class Address implements Deserializable{
     city:string;
     country:string;
     zipcode:string;
+    cap: any;
+    street: any;
+    civicNumber: any;
 
     deserialize(input: any) {
         Object.assign(this, input);

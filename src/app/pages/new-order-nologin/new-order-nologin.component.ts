@@ -25,6 +25,8 @@ export class NewOrderNologinComponent implements OnInit {
     receiver: Receiver;
     tmpParcel: Parcel;
     dimension: Dimension;
+    panelOpenState: boolean;
+    expandedV1: any;
 
     constructor(private api: ApiService) {
       this.delivery = new Delivery();
@@ -38,12 +40,14 @@ export class NewOrderNologinComponent implements OnInit {
       this.tmpParcel.dimension = this.dimension;
       this.delivery.packages = this.parcel;
 
-      this.receiver.address = this.address;
+      this.receiver.address = new Address();
       this.delivery.receiver = this.receiver;
 
-      this.customer.address = this.address;
+      this.customer.address = new Address();
       this.delivery.customer = this.customer;
-  }
+      this.panelOpenState = true;
+      this.expandedV1 = true; // this is to control open/close operation
+    }
 
   private prepareSave(): Delivery {
     return new Delivery().deserialize(this.form.value);
@@ -53,7 +57,7 @@ export class NewOrderNologinComponent implements OnInit {
   packageElements = packageElements;
   timeElements = timeElements;
 
-  selectedType: string = 'Azienda/Negozio';
+  selectedType: string = '';
   selectedTypeRecv: string = 'Privato';
   addressIdentical: boolean = true;
   formData: any;
@@ -101,9 +105,14 @@ export class NewOrderNologinComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if (Object.keys(this.tmpParcel).length > 0){
+      this.parcel.push(this.tmpParcel);
+    }
     console.log('Your form data : ', this.delivery);
     this.createOrders();
-
+    this.tmpParcel = new Parcel();
+    while (this.parcel.length > 0)
+      this.parcel.pop();
   }
 
   addParcel(form: NgForm) {

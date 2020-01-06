@@ -8,6 +8,10 @@ export class Receiver implements Deserializable {
     lastname: string;
     email:string;
     phoneNumber:string;
+    type: string;
+    fiscalcode: any;
+    vatNumber: any;
+    businessName: any;
 
     deserialize(input: any) {
         Object.assign(this, input);

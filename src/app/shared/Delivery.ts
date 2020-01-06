@@ -9,6 +9,16 @@ export class Delivery implements Deserializable {
     receiver: Receiver;
     packages: Parcel[] = [];
 
+    pickUpDate: any;
+    pickUpHourFrom: any;
+    pickUpHourTo: any;
+    deliveryHourTo: any;
+    deliveryHourFrom: any;
+    deliveryDate: any;
+
+    deliveryNote: any;
+    paymentCode: any;
+
     deserialize(input: any) {
         Object.assign(this, input);
         return this;
