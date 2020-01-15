@@ -5,10 +5,11 @@ import {Delivery} from "./shared/Delivery";
 
 
 const localUrl = 'http://localhost:8080/deliveries';
-// const localUrl = 'http://blinklastmile-env.tygfir3fqy.eu-west-3.elasticbeanstalk.com/deliveries';
+//const localUrl = 'http://curio.eu-west-3.elasticbeanstalk.com';
 
-const loginUrl = 'http://localhost:8080/login';
-const createOrder = 'http://localhost:8080/deliveries';
+const loginUrl = localUrl + '/login';
+const createOrder = localUrl + '/deliveries';
+const listOrderUrl = localUrl + '/deliveries';
 
 
 // @ts-ignore
@@ -21,7 +22,7 @@ export class ApiService {
 
   getOrders() {
     const headers = new HttpHeaders({ Authorization: "Basic YWRtaW46cGFzc3dvcmQ="});
-    return this.http.get(localUrl, {headers});
+    return this.http.get(listOrderUrl, {headers});
   }
   model: any = {};
 

@@ -2,88 +2,47 @@
 
 
 	<!-- Mittente -->
-	<form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" >
-	<div class="col-md-8 order-md-1 blk-ordernol-form">
-		<br>
-		<h4 class="mb-3">Mittente</h4>
-
-		<hr class="mb-4">
-
-<!--		<mat-accordion #accordion="matAccordion" [multi]="true">-->
-<!--			<mat-expansion-panel [expanded]="expandedV1">-->
-
-<!--				<mat-expansion-panel-header>-->
-<!--					<mat-panel-title>-->
-<!--						Personal data-->
-<!--					</mat-panel-title>-->
-<!--					<mat-panel-description>-->
-<!--						Type your name and age-->
-<!--					</mat-panel-description>-->
-<!--				</mat-expansion-panel-header>-->
-
-<!--				<mat-action-row>-->
-<!--					<mat-form-field>-->
-<!--						<mat-panel-description>Tipo</mat-panel-description>-->
-<!--						<br>-->
-<!--						<mat-select class="custom-select d-block w-100" (selectionChange)="selectTypeChangeHandler($event)" name="type1" [(ngModel)]="delivery.customer.type">-->
-<!--							<mat-option *ngFor="let type of typeElements" [value]="type.name">-->
-<!--								{{type.name}}-->
-<!--							</mat-option>-->
-<!--						</mat-select>-->
-<!--					</mat-form-field>-->
-<!--				</mat-action-row>-->
-
-<!--				<mat-action-row>-->
-<!--					<mat-form-field *ngIf="selectedType=='Privato'">-->
-<!--						<mat-panel-description>Nome</mat-panel-description>-->
-<!--						<input matInput type="text" class="form-control" id="username20" name="username20" [(ngModel)]="delivery.customer.name" required>-->
-<!--					</mat-form-field>-->
-<!--				</mat-action-row>-->
-
-<!--			</mat-expansion-panel>-->
-
-<!--			<mat-expansion-panel [expanded]="expandedV1">-->
-<!--				<mat-expansion-panel-header>-->
-<!--					<mat-panel-title>-->
-<!--						Self aware panel-->
-<!--					</mat-panel-title>-->
-<!--					<mat-panel-description>-->
-<!--						Currently I am {{panelOpenState ? 'open' : 'closed'}}-->
-<!--					</mat-panel-description>-->
-<!--				</mat-expansion-panel-header>-->
-<!--				<mat-form-field>-->
-<!--					<mat-select placeholder="type" (change)="selectTypeChangeHandler($event)" name="type1" [(ngModel)]="delivery.customer.type">-->
-<!--						<mat-option *ngFor="let type of typeElements" [value]="type.name">-->
-<!--							{{type.name}}-->
-<!--						</mat-option>-->
-<!--					</mat-select>-->
-<!--				</mat-form-field>-->
-<!--				<p>I'm visible because I am open</p>-->
-<!--			</mat-expansion-panel>-->
-<!--		</mat-accordion>-->
-
+	<form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" ngNativeValidate>
+		<div class="col-md-8 order-md-3 blk-ordernol-form">
+			<h4 class="mb-3">Mittente</h4>
 			<div class="row">
 				<div class="col-md-8 mb-3">
-					<label for="type1">Tipo*</label>
-					<select class="custom-select d-block w-100" id="type1" (change)="selectTypeChangeHandler($event)" name="type1" [(ngModel)]="delivery.customer.type" required>
+					<label for="paymentCode">Codice Cliente</label>
+					<input type="text" class="form-control" id="paymentCode" placeholder="Your secret code" name="paymentCode" [(ngModel)]="delivery.paymentCode" required>
+					<small class="text-muted">Bonus code for one delivery order</small>
+					<div class="invalid-feedback" style="width: 100%;">
+						Your username is required.
+					</div>
+					<small class="text-muted">Bonus code for one delivery order</small>
+				</div>
+			</div>
+		</div>
+
+		<!-- Destinatario -->
+		<div class="col-md-8 order-md-3 blk-ordernol-form">
+			<h4 class="mb-3">Destinatario</h4>
+			<div class="row">
+				<div class="col-md-8 mb-3">
+					<label for="type2">Tipo*</label>
+					<select class="custom-select d-block w-100" id="type2" (change)="selectTypeChangeHandler($event)" name="type2" [(ngModel)]="delivery.receiver.type" required>
 						<option *ngFor="let type of typeElements">{{type.name}}</option>
 					</select>
 				</div>
 			</div>
 
-			<div *ngIf="delivery.customer.type=='Privato'">
+				<div *ngIf="delivery.receiver.type=='Privato'">
 				<div class="row">
 					<div class="col-md-5 mb-3">
-						<label for="usernameprv">Nome</label>
-						<input type="text" class="form-control" id="usernameprv" placeholder="Mario" name="usernameprv" [(ngModel)]="delivery.customer.name" required>
+						<label for="username2">Nome</label>
+						<input type="text" class="form-control" id="username2" placeholder="Mario" name="username2" [(ngModel)]="delivery.receiver.name" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
 					</div>
 
 					<div class="col-md-5 mb-3">
-						<label for="lastnameprv">Cognome</label>
-						<input type="text" class="form-control" id="lastnameprv" placeholder="Rossi" name="lastnameprv" [(ngModel)]="delivery.customer.lastname" required>
+						<label for="lastname2">Cognome</label>
+						<input type="text" class="form-control" id="lastname2" placeholder="Rossi" name="lastname2" [(ngModel)]="delivery.receiver.lastname" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Your username is required.
 						</div>
@@ -91,19 +50,19 @@
 				</div>
 			</div>
 
-			<div *ngIf="delivery.customer.type=='Azienda/Negozio'">
+			<div *ngIf="delivery.receiver.type=='Azienda/Negozio'">
 				<div class="row">
 					<div class="col-md-5 mb-3">
-						<label for="usernamemerchant">Ragione sociale</label>
-						<input type="text" class="form-control" id="usernamemerchant" name="usernamemerchant" placeholder="abc Srl" [(ngModel)]="delivery.customer.businessName" required>
+						<label for="usernamemerchant2">Ragione sociale</label>
+						<input type="text" class="form-control" id="usernamemerchant2" placeholder="abc Srl" name="usernamemerchant2" [(ngModel)]="delivery.receiver.vatNumber" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
 					</div>
 
 					<div class="col-md-5 mb-3">
-						<label for="fiscalcode">Partita IVA</label>
-						<input type="text" class="form-control" id="fiscalcode" name="fiscalcode" placeholder="XXXXXX" [(ngModel)]="delivery.customer.vatNumber" required>
+						<label for="fiscalcode_merchant">Partita IVA</label>
+						<input type="text" class="form-control" id="fiscalcode_merchant" name="fiscalcode_merchant" placeholder="XXXXXX" [(ngModel)]="delivery.receiver.businessName" required>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
@@ -113,16 +72,16 @@
 
 			<div class="row">
 				<div class="col-md-5 mb-3">
-					<label for="mail2">Mail</label>
-					<input type="text" class="form-control" id="mail2" placeholder="yourmail@yourdomain.it" name="mail2" required [(ngModel)]="delivery.customer.email">
+					<label for="mail">Mail</label>
+					<input type="text" class="form-control" id="mail" placeholder="mail" name="mail" [(ngModel)]="delivery.receiver.email" required>
 					<div class="invalid-feedback" style="width: 100%;">
 						Nome richiesto.
 					</div>
 				</div>
 
 				<div class="col-md-5 mb-3">
-					<label for="phone2">Telefono</label>
-					<input type="text" class="form-control" id="phone2" placeholder="+39333223993" name="phone2" [(ngModel)]="delivery.customer.phoneNumber" required>
+					<label for="phone1">Telefono</label>
+					<input type="text" class="form-control" id="phone1" placeholder="Rossi" name="phone1" [(ngModel)]="delivery.receiver.phoneNumber" required>
 					<div class="invalid-feedback" style="width: 100%;">
 						Your username is required.
 					</div>
@@ -131,24 +90,24 @@
 
 			<div class="row">
 				<div class="col-md-2 mb-3">
-					<label for="address_cap2">CAP</label>
-					<input type="text" class="form-control" id="address_cap2" name="address_cap2" placeholder="20020" [(ngModel)]="delivery.customer.address.cap">
+					<label for="address_cap1">CAP</label>
+					<input type="text" class="form-control" id="address_cap1" name="address_cap1" placeholder="1234 Main St" [(ngModel)]="delivery.receiver.address.cap">
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
 				</div>
 
 				<div class="col-md-6 mb-3">
-					<label for="address_city2">Città</label>
-					<input type="text" class="form-control" id="address_city2" name="address_city2" placeholder="Milan" [(ngModel)]="delivery.customer.address.city" required>
+					<label for="address_city1">Città</label>
+					<input type="text" class="form-control" id="address_city1" name="address_city1" placeholder="1234 Main St" [(ngModel)]="delivery.receiver.address.city" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
 				</div>
 
 				<div class="col-md-2 mb-3">
-					<label for="address_prov2">Provincia</label>
-					<input type="text" class="form-control" id="address_prov2" placeholder="MI" name="address_prov2" [(ngModel)]="delivery.customer.address.province" required>
+					<label for="address_prov1">Provincia</label>
+					<input type="text" class="form-control" id="address_prov1" placeholder="1234 Main St" name="address_prov1" [(ngModel)]="delivery.receiver.address.province" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
@@ -158,379 +117,181 @@
 
 			<div class="row">
 				<div class="col-md-8 mb-3">
-					<label for="address_street2">Via/Piazza</label>
-					<input type="text" class="form-control" id="address_street2" placeholder="Via paravia" name="address_street2" [(ngModel)]="delivery.customer.address.street" required>
+					<label for="address_street">Via/Piazza</label>
+					<input type="text" class="form-control" id="address_street" placeholder="1234 Main St" name="address_street" [(ngModel)]="delivery.receiver.address.street" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
 				</div>
 
 				<div class="col-md-2 mb-3">
-					<label for="civic_number2">N.</label>
-					<input type="text" class="form-control" id="civic_number2" placeholder="45" name="civic_number2" [(ngModel)]="delivery.customer.address.civicNumber" required>
+					<label for="civic_number">N.</label>
+					<input type="text" class="form-control" id="civic_number" placeholder="1234 Main St" name="civic_number" [(ngModel)]="delivery.receiver.address.civicNumber" required>
 					<div class="invalid-feedback">
 						Please enter your shipping address.
 					</div>
 				</div>
 			</div>
-
-
-			<div class="row">
-				<div class="col-md-10 mb-3">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="same-address-consumer" (change)="addressIdenticalHandler($event)" checked>
-						<label class="custom-control-label" for="same-address">Indirizzo di fatturazione uguale all'indirizzo di ritiro della merce</label>
+		</div>
+		<br>
+		<!-- Pacco -->
+		<form #myform1 = "ngForm" (ngSubmit)="addParcel(myform1)" >
+			<div class="col-md-8 order-md-4 blk-ordernol-form">
+				<h4 class="mb-3">Pacco</h4>
+				<hr class="mb-4">
+					<div class="row">
+						<div class="col-md-5 mb-3">
+							<label for="type3" matTooltip="Attention we can deliver orders easier than a 55 plasma tv" [matTooltipPosition]="position.value" aria-label="Attention we can deliver orders easier than a 55 plasma tv">Tipo*</label>
+							<select class="custom-select d-block w-100" id="type3" (change)="selectTypeRecvChangeHandler($event)" name="type3" [(ngModel)]="tmpParcel.type" required>
+								<option *ngFor="let package of packageElements">{{package.name}}</option>
+							</select>
+						</div>
 					</div>
-				</div>
-			</div>
-		</div>
 
-	<!-- Punto di ritiro -->
-<!--	<div class="col-md-8 order-md-2 blk-ordernol-form">-->
-<!--		<div *ngIf="addressIdentical==false">-->
-<!--			<h4 class="mb-3">Punto di ritiro</h4>-->
-<!--			<hr class="mb-4">-->
+					<div class="row">
+						<div class="col-md-3 mb-3">
+							<label for="weight">Peso</label>
+							<input type="text" class="form-control" id="weight" placeholder="weight" name="weight" [(ngModel)]="tmpParcel.weight" required>
+							<div class="invalid-feedback" style="width: 100%;">
+								Nome richiesto.
+							</div>
+						</div>
 
-<!--			<div class="row">-->
-<!--				<div class="col-md-2 mb-3">-->
-<!--					<label for="address_cap">CAP</label>-->
-<!--					<input type="text" class="form-control" id="address_cap" placeholder="1234 Main St" required>-->
-<!--					<div class="invalid-feedback">-->
-<!--						Please enter your shipping address.-->
-<!--					</div>-->
-<!--				</div>-->
+						<div class="col-md-3 mb-3">
+							<label for="height">Altezza</label>
+							<input type="text" class="form-control" id="height" placeholder="height" name="height" [(ngModel)]="dimension.height" required>
+							<div class="invalid-feedback" style="width: 100%;">
+								Your username is required.
+							</div>
+						</div>
 
-<!--				<div class="col-md-6 mb-3">-->
-<!--					<label for="address_city">Città</label>-->
-<!--					<input type="text" class="form-control" id="address_city" placeholder="1234 Main St" required>-->
-<!--					<div class="invalid-feedback">-->
-<!--						Please enter your shipping address.-->
-<!--					</div>-->
-<!--				</div>-->
+						<div class="col-md-3 mb-3">
+							<label for="length">Lunghezza</label>
+							<input type="text" class="form-control" id="length" placeholder="length" name="length" [(ngModel)]="dimension.depth" required>
+							<div class="invalid-feedback" style="width: 100%;">
+								Your username is required.
+							</div>
+						</div>
 
-<!--				<div class="col-md-2 mb-3">-->
-<!--					<label for="address_prov">Provincia</label>-->
-<!--					<input type="text" class="form-control" id="address_prov" placeholder="1234 Main St" required>-->
-<!--					<div class="invalid-feedback">-->
-<!--						Please enter your shipping address.-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-
-<!--			<div class="row">-->
-<!--				<div class="col-md-8 mb-3">-->
-<!--					<label for="address">Via/Piazza</label>-->
-<!--					<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>-->
-<!--					<div class="invalid-feedback">-->
-<!--						Please enter your shipping address.-->
-<!--					</div>-->
-<!--				</div>-->
-
-<!--				<div class="col-md-2 mb-3">-->
-<!--					<label for="address">N.</label>-->
-<!--					<input type="text" class="form-control" id="address_n" placeholder="1234 Main St" required>-->
-<!--					<div class="invalid-feedback">-->
-<!--						Please enter your shipping address.-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-
-	<!-- Destinatario -->
-	<div class="col-md-8 order-md-3 blk-ordernol-form">
-		<h4 class="mb-3">Destinatario</h4>
-		<div class="row">
-			<div class="col-md-8 mb-3">
-				<label for="type2">Tipo*</label>
-				<select class="custom-select d-block w-100" id="type2" (change)="selectTypeChangeHandler($event)" name="type2" [(ngModel)]="delivery.receiver.type" required>
-					<option *ngFor="let type of typeElements">{{type.name}}</option>
-				</select>
-			</div>
-		</div>
-
-			<div *ngIf="delivery.receiver.type=='Privato'">
-			<div class="row">
-				<div class="col-md-5 mb-3">
-					<label for="username2">Nome</label>
-					<input type="text" class="form-control" id="username2" placeholder="Mario" name="username2" [(ngModel)]="delivery.receiver.name" required>
-					<div class="invalid-feedback" style="width: 100%;">
-						Nome richiesto.
+						<div class="col-md-3 mb-3">
+							<label for="width">Larghezza</label>
+							<input type="text" class="form-control" id="width" placeholder="width" name="width" [(ngModel)]="dimension.width" required>
+							<div class="invalid-feedback" style="width: 100%;">
+								Your username is required.
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<div class="col-md-5 mb-3">
-					<label for="lastname2">Cognome</label>
-					<input type="text" class="form-control" id="lastname2" placeholder="Rossi" name="lastname2" [(ngModel)]="delivery.receiver.lastname" required>
-					<div class="invalid-feedback" style="width: 100%;">
-						Your username is required.
+	<!--				<div class="row">-->
+	<!--					<div class="col-md-3 mb-3">-->
+	<!--						<div class="custom-control custom-checkbox">-->
+	<!--							<input type="checkbox" class="custom-control-input" id="stackable">-->
+	<!--							<label class="custom-control-label" for="same-address">Impilabile</label>-->
+	<!--						</div>-->
+	<!--					</div>-->
+
+	<!--					<div class="col-md-3 mb-3">-->
+	<!--						<div class="custom-control custom-checkbox">-->
+	<!--							<input type="checkbox" class="custom-control-input" id="irregularshape">-->
+	<!--							<label class="custom-control-label" for="same-address">Forma irregolare</label>-->
+	<!--						</div>-->
+	<!--					</div>-->
+
+	<!--					<div class="col-md-3 mb-3">-->
+	<!--						<div class="custom-control custom-checkbox">-->
+	<!--							<input type="checkbox" class="custom-control-input" id="revertable" >-->
+	<!--							<label class="custom-control-label" for="same-address">Capovolgibile</label>-->
+	<!--						</div>-->
+	<!--					</div>-->
+	<!--				</div>-->
+
+					<div class="row">
+						<div class="col-md-9 mb-3">
+							<label for="description">Note</label>
+							<textarea class="form-control" id="description" rows="3" name="width" [(ngModel)]="tmpParcel.description"></textarea>
+							<div class="invalid-feedback" style="width: 100%;">
+								Nome richiesto.
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-
-		<div *ngIf="delivery.receiver.type=='Azienda/Negozio'">
-			<div class="row">
-				<div class="col-md-5 mb-3">
-					<label for="usernamemerchant2">Ragione sociale</label>
-					<input type="text" class="form-control" id="usernamemerchant2" placeholder="abc Srl" name="usernamemerchant2" [(ngModel)]="delivery.receiver.vatNumber" required>
-					<div class="invalid-feedback" style="width: 100%;">
-						Nome richiesto.
-					</div>
+				<input class="btn btn-primary" type="submit" value="Add">
 				</div>
 
-				<div class="col-md-5 mb-3">
-					<label for="fiscalcode_merchant">Partita IVA</label>
-					<input type="text" class="form-control" id="fiscalcode_merchant" name="fiscalcode_merchant" placeholder="XXXXXX" [(ngModel)]="delivery.receiver.businessName" required>
-					<div class="invalid-feedback" style="width: 100%;">
-						Nome richiesto.
-					</div>
-				</div>
-			</div>
-		</div>
+		</form>
 
-		<div class="row">
-			<div class="col-md-5 mb-3">
-				<label for="mail">Mail</label>
-				<input type="text" class="form-control" id="mail" placeholder="mail" name="mail" required [(ngModel)]="delivery.receiver.email">
-				<div class="invalid-feedback" style="width: 100%;">
-					Nome richiesto.
-				</div>
-			</div>
+		<br>
 
-			<div class="col-md-5 mb-3">
-				<label for="phone1">Telefono</label>
-				<input type="text" class="form-control" id="phone1" placeholder="Rossi" name="phone1" [(ngModel)]="delivery.receiver.phoneNumber" required>
-				<div class="invalid-feedback" style="width: 100%;">
-					Your username is required.
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-2 mb-3">
-				<label for="address_cap1">CAP</label>
-				<input type="text" class="form-control" id="address_cap1" name="address_cap1" placeholder="1234 Main St" [(ngModel)]="delivery.receiver.address.cap">
-				<div class="invalid-feedback">
-					Please enter your shipping address.
-				</div>
-			</div>
-
-			<div class="col-md-6 mb-3">
-				<label for="address_city1">Città</label>
-				<input type="text" class="form-control" id="address_city1" name="address_city1" placeholder="1234 Main St" [(ngModel)]="delivery.receiver.address.city" required>
-				<div class="invalid-feedback">
-					Please enter your shipping address.
-				</div>
-			</div>
-
-			<div class="col-md-2 mb-3">
-				<label for="address_prov1">Provincia</label>
-				<input type="text" class="form-control" id="address_prov1" placeholder="1234 Main St" name="address_prov1" [(ngModel)]="delivery.receiver.address.province" required>
-				<div class="invalid-feedback">
-					Please enter your shipping address.
-				</div>
-			</div>
-		</div>
-
-
-		<div class="row">
-			<div class="col-md-8 mb-3">
-				<label for="address_street">Via/Piazza</label>
-				<input type="text" class="form-control" id="address_street" placeholder="1234 Main St" name="address_street" [(ngModel)]="delivery.receiver.address.street" required>
-				<div class="invalid-feedback">
-					Please enter your shipping address.
-				</div>
-			</div>
-
-			<div class="col-md-2 mb-3">
-				<label for="civic_number">N.</label>
-				<input type="text" class="form-control" id="civic_number" placeholder="1234 Main St" name="civic_number" [(ngModel)]="delivery.receiver.address.civicNumber" required>
-				<div class="invalid-feedback">
-					Please enter your shipping address.
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-
-	<!-- Pacco -->
-	<form #myform1 = "ngForm" (ngSubmit)="addParcel(myform1)" >
+		<!-- Servizio -->
 		<div class="col-md-8 order-md-4 blk-ordernol-form">
-			<h4 class="mb-3">Pacco</h4>
-			<hr class="mb-4">
-				<div class="row">
-					<div class="col-md-5 mb-3">
-						<label for="type3">Tipo*</label>
-						<select class="custom-select d-block w-100" id="type3" (change)="selectTypeRecvChangeHandler($event)" name="type3" [(ngModel)]="tmpParcel.type" required>
-							<option *ngFor="let package of packageElements">{{package.name}}</option>
-			  			</select>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-3 mb-3">
-						<label for="weight">Peso</label>
-						<input type="text" class="form-control" id="weight" placeholder="weight" name="weight" [(ngModel)]="tmpParcel.weight" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Nome richiesto.
+			<h4 class="mb-3">Servizio</h4>
+				<hr class="mb-4">
+				<div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label>Fascia oraria di ritiro</label>
 						</div>
-					</div>
 
-					<div class="col-md-3 mb-3">
-						<label for="height">Altezza</label>
-						<input type="text" class="form-control" id="height" placeholder="height" name="height" [(ngModel)]="dimension.height" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Your username is required.
+						<div class="col-md-4 mb-3">
+							<label for="pickupdate">Data</label>
+							<input type="date" class="form-control" id="pickupdate" placeholder="" name="pickupdate" [(ngModel)]="delivery.pickUpDate" required>
 						</div>
-					</div>
 
-					<div class="col-md-3 mb-3">
-						<label for="length">Lunghezza</label>
-						<input type="text" class="form-control" id="length" placeholder="length" name="length" [(ngModel)]="dimension.depth" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Your username is required.
+						<div class="col-md-2 mb-3">
+							<label for="pickUpHourFrom">Dalle</label>
+							<select class="custom-select d-block w-100" id="pickUpHourFrom" name="pickUpHourFrom" [(ngModel)]="delivery.pickUpHourFrom" required>
+							<option *ngFor="let time of timeElements">{{time.name}}</option>
+							</select>
 						</div>
-					</div>
 
-					<div class="col-md-3 mb-3">
-						<label for="width">Larghezza</label>
-						<input type="text" class="form-control" id="width" placeholder="width" name="width" [(ngModel)]="dimension.width" required>
-						<div class="invalid-feedback" style="width: 100%;">
-							Your username is required.
+						<div class="col-md-2 mb-3">
+							<label for="pickUpHourTo">hourTo</label>
+							<select class="custom-select d-block w-100" id="pickUpHourTo" name="pickUpHourTo" [(ngModel)]="delivery.pickUpHourTo" required>
+							<option *ngFor="let time of timeElements">{{time.name}}</option>
+						  </select>
 						</div>
 					</div>
 				</div>
 
-<!--				<div class="row">-->
-<!--					<div class="col-md-3 mb-3">-->
-<!--						<div class="custom-control custom-checkbox">-->
-<!--							<input type="checkbox" class="custom-control-input" id="stackable">-->
-<!--							<label class="custom-control-label" for="same-address">Impilabile</label>-->
-<!--						</div>-->
-<!--					</div>-->
+				<hr class="mb-4">
+				<div>
+					<div class="row">
+						<div class="col-md-2 mb-3">
+							<label>Fascia oraria di consegna</label>
+						</div>
 
-<!--					<div class="col-md-3 mb-3">-->
-<!--						<div class="custom-control custom-checkbox">-->
-<!--							<input type="checkbox" class="custom-control-input" id="irregularshape">-->
-<!--							<label class="custom-control-label" for="same-address">Forma irregolare</label>-->
-<!--						</div>-->
-<!--					</div>-->
+						<div class="col-md-4 mb-3">
+							<label for="deliveryDate">Data</label>
+							<input type="date" class="form-control" id="deliveryDate" placeholder="" name="deliveryDate" [(ngModel)]="delivery.deliveryDate" required>
+						</div>
 
-<!--					<div class="col-md-3 mb-3">-->
-<!--						<div class="custom-control custom-checkbox">-->
-<!--							<input type="checkbox" class="custom-control-input" id="revertable" >-->
-<!--							<label class="custom-control-label" for="same-address">Capovolgibile</label>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
+						<div class="col-md-2 mb-3">
+							<label for="deliveryHourFrom">Dalle</label>
+							<select class="custom-select d-block w-100" id="deliveryHourFrom" name="deliveryHourFrom" [(ngModel)]="delivery.deliveryHourFrom" required>
+								<option *ngFor="let time of timeElements">{{time.name}}</option>
+							</select>
+						</div>
+
+						<div class="col-md-2 mb-3">
+							<label for="deliveryHourTo">hourTo</label>
+							<select class="custom-select d-block w-100" id="deliveryHourTo" name="deliveryHourTo" [(ngModel)]="delivery.deliveryHourTo" required>
+								<option *ngFor="let time of timeElements">{{time.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
 
 				<div class="row">
 					<div class="col-md-9 mb-3">
-						<label for="description">Note</label>
-						<textarea class="form-control" id="description" rows="3" name="width" [(ngModel)]="tmpParcel.description"></textarea>
+						<label for="deliveryNote">Note</label>
+						<textarea class="form-control" id="deliveryNote" rows="3" name="deliveryNote" [(ngModel)]="delivery.deliveryNote"></textarea>
 						<div class="invalid-feedback" style="width: 100%;">
 							Nome richiesto.
 						</div>
 					</div>
 				</div>
-			<input class="btn btn-primary" type="submit" value="Add">
-			</div>
-
-	</form>
-
-	<br>
-
-	<!-- Servizio -->
-	<div class="col-md-8 order-md-4 blk-ordernol-form">
-		<h4 class="mb-3">Servizio</h4>
-			<hr class="mb-4">
-			<div>
-				<div class="row">
-					<div class="col-md-2 mb-3">
-						<label for="type">Fascia oraria di ritiro</label>
-					</div>
-
-					<div class="col-md-4 mb-3">
-						<label for="pickupdate">Data</label>
-						<input type="date" class="form-control" id="pickupdate" placeholder="" name="pickupdate" [(ngModel)]="delivery.pickUpDate" required>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="pickUpHourFrom">Dalle</label>
-						<select class="custom-select d-block w-100" id="pickUpHourFrom" name="pickUpHourFrom" [(ngModel)]="delivery.pickUpHourFrom" required>
-						<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="pickUpHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="pickUpHourTo" name="pickUpHourTo" [(ngModel)]="delivery.pickUpHourTo" required>
-						<option *ngFor="let time of timeElements">{{time.name}}</option>
-					  </select>
-					</div>
-				</div>
-			</div>
-
-			<hr class="mb-4">
-			<div>
-				<div class="row">
-					<div class="col-md-2 mb-3">
-						<label>Fascia oraria di consegna</label>
-					</div>
-
-					<div class="col-md-4 mb-3">
-						<label for="deliveryDate">Data</label>
-						<input type="date" class="form-control" id="deliveryDate" placeholder="" name="deliveryDate" [(ngModel)]="delivery.deliveryDate" required>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="deliveryHourFrom">Dalle</label>
-						<select class="custom-select d-block w-100" id="deliveryHourFrom" name="deliveryHourFrom" [(ngModel)]="delivery.deliveryHourFrom" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="deliveryHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="deliveryHourTo" name="deliveryHourTo" [(ngModel)]="delivery.deliveryHourTo" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-9 mb-3">
-					<label for="deliveryNote">Note</label>
-					<textarea class="form-control" id="deliveryNote" rows="3" name="deliveryNote" [(ngModel)]="delivery.deliveryNote"></textarea>
-					<div class="invalid-feedback" style="width: 100%;">
-						Nome richiesto.
-					</div>
-				</div>
-			</div>
-	</div>
-
-
-	<!-- Pagamento -->
-	<div class="col-md-8 order-md-4 blk-ordernol-form">
-		<h4 class="mb-3">Pagamento</h4>
-		<hr class="mb-4">
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="paymentCode">Codice Pagamento</label>
-					<input type="text" class="form-control" id="paymentCode" placeholder="paymentCode" name="paymentCode" [(ngModel)]="delivery.paymentCode" required>
-					<small class="text-muted">Bonus code for one delivery order</small>
-					<div class="invalid-feedback" style="width: 100%;">
-						Your username is required.
-					</div>
-					<small class="text-muted">Bonus code for one delivery order</small>
-				</div>
-			</div>
 		</div>
 
-		<input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout">
+		<input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout" routerLinkActive="/order-recap-nologin">
 	</form>
 
 
@@ -540,15 +301,16 @@
 			<span class="text-muted">La tua spedizione</span>
 		</h4>
 		<ul class="list-group mb-3">
-			<li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of parcel">
+			<li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of parcel; let i = index">
 				<div>
 					<h6 class="my-0">
 						{{item.description}}  [{{item.weight}} : {{item.dimension.width}} : {{item.dimension.height}} : {{item.dimension.depth}}]
+						<button mat-icon-button color="black" (click)="deleteParcel(i)"><mat-icon>delete</mat-icon>
+					</button>
 					</h6>
 				</div>
 			</li>
 		</ul>
-    <a mat-raised-button color="primary" routerLink="/order-recap-nologin">Ordina</a>
 
 	</div>
 

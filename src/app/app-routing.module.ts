@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { AboutComponent } from './pages/about/about.component';
-import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-nologin.component';
 import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
@@ -14,13 +12,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
   { path: 'new-order-nologin', component: NewOrderNologinComponent },
   { path: 'order-recap-nologin', component: OrderRecapNologinComponent },
   { path: 'sign-up', component: SignUpComponent },
-
-  
-
 
     // otherwise redirect to home
     { path: '**', component: HomeComponent }

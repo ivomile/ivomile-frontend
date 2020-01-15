@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
-import { FormGroup, NgForm, Validators } from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import { Customer } from "../../shared/Customer";
 import { Delivery } from "../../shared/Delivery";
 import { Address } from "../../shared/Address";
 import { Receiver } from "../../shared/Receiver";
 import { Parcel } from "../../shared/Parcel";
 import {Dimension} from "../../shared/Dimension";
+import {TooltipPosition} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-new-order-nologin',
@@ -16,17 +17,20 @@ import {Dimension} from "../../shared/Dimension";
 
 export class NewOrderNologinComponent implements OnInit {
 
-    orders: any = [];
-    delivery: Delivery;
-    customer: Customer;
-    address: Address;
-    form: FormGroup;
-    parcel:Parcel[]=[];
-    receiver: Receiver;
-    tmpParcel: Parcel;
-    dimension: Dimension;
-    panelOpenState: boolean;
-    expandedV1: any;
+  positionOptions: TooltipPosition[] = ['right'];
+  position = new FormControl(this.positionOptions[0]);
+
+  orders: any = [];
+  delivery: Delivery;
+  customer: Customer;
+  address: Address;
+  form: FormGroup;
+  parcel:Parcel[]=[];
+  receiver: Receiver;
+  tmpParcel: Parcel;
+  dimension: Dimension;
+  panelOpenState: boolean;
+  expandedV1: any;
 
     constructor(private api: ApiService) {
       this.delivery = new Delivery();
@@ -120,6 +124,10 @@ export class NewOrderNologinComponent implements OnInit {
     this.delivery.packages.push(this.tmpParcel);
     this.tmpParcel = new Parcel();
     this.dimension = new Dimension();
+  }
+
+  deleteParcel(i: number) {
+    this.delivery.packages.splice(+i, 1);
   }
 }
 
