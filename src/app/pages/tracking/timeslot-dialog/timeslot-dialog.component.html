@@ -1,0 +1,19 @@
+<div>
+    <h3>Configura il tuo time slot di delivery secondo le tue esigenze</h3>
+    <mat-form-field>
+        <mat-label>Timeslot width</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let timeSlot of timeSlots" [value]="timeSlot.value">
+                {{timeSlot.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Orario di inizio</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let timeForDelivery of timeForDeliverys" [value]="timeForDelivery.value">
+                {{timeForDelivery.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

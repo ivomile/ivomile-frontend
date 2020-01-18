@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 //Material imports
 import {A11yModule} from '@angular/cdk/a11y';
@@ -51,6 +50,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 //Components
@@ -61,9 +61,13 @@ import { NewOrderNologinComponent } from './pages/new-order-nologin/new-order-no
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 import { OrderRecapNologinComponent } from './pages/order-recap-nologin/order-recap-nologin.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { Tracking } from './pages/tracking/tracking.component';
+import { TrackingDialog } from './pages/tracking/tracking-dialog/tracking-dialog.component';
+import { TrackingTimeSlot } from './pages/tracking/timeslot-dialog/timeslot-dialog.component';
 import { ApiService } from './api.service';
 import { AuthInterceptor } from "./interceptor";
 import { NgSelectModule } from "@ng-select/ng-select";
+import {CredentialDialog} from "./pages/tracking/credential/credential-dialog.component";
 
 
 @NgModule({
@@ -118,11 +122,15 @@ import { NgSelectModule } from "@ng-select/ng-select";
     HttpClientModule,
     NgSelectModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule
   ],
 
   entryComponents: [
-    SignInDialogComponent
+    SignInDialogComponent,
+    TrackingDialog,
+    TrackingTimeSlot,
+    CredentialDialog
   ],
 
   providers: [
@@ -133,20 +141,21 @@ import { NgSelectModule } from "@ng-select/ng-select";
     },
     ApiService
   ],
-
-
-  declarations: [ 
-    AppComponent, 
+  declarations: [
+    AppComponent,
     HeaderComponent,
     HomeComponent,
     SignInDialogComponent,
     NewOrderNologinComponent,
     OrderRecapNologinComponent,
     SignUpComponent,
+    Tracking,
+    TrackingDialog,
+    TrackingTimeSlot,
+    CredentialDialog
   ],
 
-  
-
   bootstrap:    [ AppComponent ]
+
 })
 export class AppModule { }
