@@ -319,74 +319,41 @@
 <!--				</div>-->
 <!--		</div>-->
 
-		<div class="col-md-12 mb-3" style="width: 48%; float:left; height:200px; background:none; margin:10px">
+		<div class="col-md-12 mb-3" style="width: 25%; float:left; height:200px; background:none; margin:10px">
 			<h4 class="mb-3">Servizio Urgente</h4>
 			<hr class="mb-4">
 			<div>
 				<div class="row">
-					<div class="col-md-2 mb-3">
-						<label>Entro 2 ore</label>
-					</div>
-
-					<div class="col-md-4 mb-3">
-						<label for="pickupdate">Data</label>
-						<input type="date" class="form-control" id="pickupdate" placeholder="" name="pickupdate" [(ngModel)]="delivery.pickUpDate" required>
+					<div class="col-md-6 mb-3">
+						<label>Ricevi l'ordine entro 1 ora</label>
 					</div>
 
 					<div class="col-md-2 mb-3">
-						<label for="pickUpHourFrom">Dalle</label>
-						<select class="custom-select d-block w-100" id="pickUpHourFrom" name="pickUpHourFrom" [(ngModel)]="delivery.pickUpHourFrom" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="pickUpHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="pickUpHourTo" name="pickUpHourTo" [(ngModel)]="delivery.pickUpHourTo" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-					<div class="col-md-2 mb-3">
-						<label for="pickUpHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="pickUpHourTo" name="pickUpHourTo" [(ngModel)]="delivery.pickUpHourTo" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="onehour">
+							<label class="custom-control-label" for="onehour">{{oneHourPrice}}</label>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<hr class="mb-4">
-			<div>
 				<div class="row">
-					<div class="col-md-2 mb-3">
-						<label>Fascia oraria di consegna</label>
-					</div>
-
-					<div class="col-md-4 mb-3">
-						<label for="deliveryDate">Data</label>
-						<input type="date" class="form-control" id="deliveryDate" placeholder="" name="deliveryDate" [(ngModel)]="delivery.deliveryDate" required>
+					<div class="col-md-6 mb-3">
+						<label>Ricevi l'ordine entro 2 ore</label>
 					</div>
 
 					<div class="col-md-2 mb-3">
-						<label for="deliveryHourFrom">Dalle</label>
-						<select class="custom-select d-block w-100" id="deliveryHourFrom" name="deliveryHourFrom" [(ngModel)]="delivery.deliveryHourFrom" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="deliveryHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="deliveryHourTo" name="deliveryHourTo" [(ngModel)]="delivery.deliveryHourTo" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="twohour">
+							<label class="custom-control-label" for="twohour">{{twoHourPrice}}</label>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-md-9 mb-3">
-					<label for="deliveryNote">Note</label>
-					<textarea class="form-control" id="deliveryNote" rows="3" name="deliveryNote" [(ngModel)]="delivery.deliveryNote"></textarea>
+					<label for="deliveryNoteUrgent">Note</label>
+					<textarea class="form-control" id="deliveryNoteUrgent" rows="3" name="deliveryNoteUrgent" [(ngModel)]="delivery.deliveryNoteUrgent"></textarea>
 					<div class="invalid-feedback" style="width: 100%;">
 						Nome richiesto.
 					</div>
@@ -396,83 +363,99 @@
 				<input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout" routerLinkActive="/order-recap-nologin">
 			</div>
 		</div>
-		<div style="width: 48%; float:left; height:200px; background:none; margin:10px">
-			<h4 class="mb-3">Servizio Urgente</h4>
+		<div class="col-md-12 mb-3" style="width: 25%; float:left; height:200px; background:none; margin:10px">
+			<h4 class="mb-3">Servizio Standard</h4>
 			<hr class="mb-4">
 			<div>
 				<div class="row">
-					<div class="col-md-2 mb-3">
-						<label>Entro 2 ore</label>
-					</div>
-
-					<div class="col-md-4 mb-3">
-						<label for="pickupdate">Data</label>
-						<input type="date" class="form-control" id="pickupdate" placeholder="" name="pickupdate" [(ngModel)]="delivery.pickUpDate" required>
+					<div class="col-md-6 mb-3">
+						<label>Ricevi l'ordine entro 1 ora</label>
 					</div>
 
 					<div class="col-md-2 mb-3">
-						<label for="pickUpHourFrom">Dalle</label>
-						<select class="custom-select d-block w-100" id="pickUpHourFrom" name="pickUpHourFrom" [(ngModel)]="delivery.pickUpHourFrom" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="pickUpHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="pickUpHourTo" name="pickUpHourTo" [(ngModel)]="delivery.pickUpHourTo" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-					<div class="col-md-2 mb-3">
-						<label for="pickUpHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="pickUpHourTo" name="pickUpHourTo" [(ngModel)]="delivery.pickUpHourTo" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="twoHourInterval">
+							<label class="custom-control-label" for="twoHourInterval">{{twoHourIntervalPrice}}</label>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<hr class="mb-4">
-			<div>
 				<div class="row">
-					<div class="col-md-2 mb-3">
-						<label>Fascia oraria di consegna</label>
-					</div>
-
-					<div class="col-md-4 mb-3">
-						<label for="deliveryDate">Data</label>
-						<input type="date" class="form-control" id="deliveryDate" placeholder="" name="deliveryDate" [(ngModel)]="delivery.deliveryDate" required>
+					<div class="col-md-6 mb-3">
+						<label>Ricevi l'ordine entro 2 ore</label>
 					</div>
 
 					<div class="col-md-2 mb-3">
-						<label for="deliveryHourFrom">Dalle</label>
-						<select class="custom-select d-block w-100" id="deliveryHourFrom" name="deliveryHourFrom" [(ngModel)]="delivery.deliveryHourFrom" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
-					</div>
-
-					<div class="col-md-2 mb-3">
-						<label for="deliveryHourTo">hourTo</label>
-						<select class="custom-select d-block w-100" id="deliveryHourTo" name="deliveryHourTo" [(ngModel)]="delivery.deliveryHourTo" required>
-							<option *ngFor="let time of timeElements">{{time.name}}</option>
-						</select>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="fourHourInterval">
+							<label class="custom-control-label" for="fourHourInterval">{{fourHourIntervalPrice}}</label>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-md-9 mb-3">
-					<label for="deliveryNote">Note</label>
-					<textarea class="form-control" id="deliveryNote" rows="3" name="deliveryNote" [(ngModel)]="delivery.deliveryNote"></textarea>
+					<label for="deliveryNoteInterval">Note</label>
+					<textarea class="form-control" id="deliveryNoteInterval" rows="3" name="deliveryNote" [(ngModel)]="delivery.deliveryNoteInterval"></textarea>
 					<div class="invalid-feedback" style="width: 100%;">
 						Nome richiesto.
 					</div>
 				</div>
 			</div>
-
 			<div class="row">
 				<input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout" routerLinkActive="/order-recap-nologin">
 			</div>
+
+
+		</div>
+
+
+
+
+		<div class="col-md-12 mb-3" style="width: 25%; float:left; height:200px; background:none; margin:10px">
+			<h4 class="mb-3">Servizio Casual</h4>
+			<hr class="mb-4">
+			<div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label>Ricevi l'ordine entro 1 ora</label>
+					</div>
+
+					<div class="col-md-2 mb-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="standardDeliveryTime">
+							<label class="custom-control-label" for="standardDeliveryTime">{{standardDeliveryTime}}</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label id="lab2"></label>
+					</div>
+
+					<div class="col-md-2 mb-3">
+						<div class="custom-control custom-checkbox">
+							<label id="lab2"></label>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-9 mb-3">
+					<label for="deliveryNoteStandard">Note</label>
+					<textarea class="form-control" id="deliveryNoteStandard" rows="3" name="deliveryNote" [(ngModel)]="delivery.deliveryNoteStandard"></textarea>
+					<div class="invalid-feedback" style="width: 100%;">
+						Nome richiesto.
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout" routerLinkActive="/order-recap-nologin">
+			</div>
+
 		</div>
 	</form>
 

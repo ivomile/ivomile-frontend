@@ -51,6 +51,12 @@ export class NewOrderNologinComponent implements OnInit {
       this.delivery.customer = this.customer;
       this.panelOpenState = true;
       this.expandedV1 = true; // this is to control open/close operation
+
+      this.oneHourPrice = '5€';
+      this.twoHourPrice = '10€';
+      this.twoHourIntervalPrice = '12€';
+      this.fourHourIntervalPrice = '5€';
+      this.standardDeliveryTime = '4€';
     }
 
   private prepareSave(): Delivery {
@@ -65,6 +71,11 @@ export class NewOrderNologinComponent implements OnInit {
   selectedTypeRecv: string = 'Privato';
   addressIdentical: boolean = true;
   formData: any;
+  oneHourPrice: any;
+  twoHourPrice: any;
+  twoHourIntervalPrice: any;
+  fourHourIntervalPrice: any;
+  standardDeliveryTime: any;
 
   selectTypeChangeHandler (event: any) 
   {

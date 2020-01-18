@@ -16,8 +16,10 @@ export class Delivery implements Deserializable {
     deliveryHourFrom: any;
     deliveryDate: any;
 
-    deliveryNote: any;
     paymentCode: any;
+    deliveryNoteInterval: any;
+    deliveryNoteStandard: any;
+    deliveryNoteUrgent: any;
 
     deserialize(input: any) {
         Object.assign(this, input);
