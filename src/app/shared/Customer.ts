@@ -1,5 +1,6 @@
 import {Address} from "./Address";
 import {Deserializable} from "./utils/Deserializable";
+import {Service} from "./Service";
 
 export class Customer implements Deserializable{
     address: Address;
@@ -12,6 +13,7 @@ export class Customer implements Deserializable{
     fiscalcode: any;
     businessName: any;
     vatNumber: any;
+    service: Service;
 
     deserialize(input: any) {
         Object.assign(this, input);

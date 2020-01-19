@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 import {Delivery} from "./shared/Delivery";
 
 
-const localUrl = 'http://localhost:8080/deliveries';
+const localUrl = 'http://localhost:8080';
 //const localUrl = 'http://curio.eu-west-3.elasticbeanstalk.com';
 
 const loginUrl = localUrl + '/login';
@@ -21,8 +21,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getOrders() {
-    const headers = new HttpHeaders({ Authorization: "Basic YWRtaW46cGFzc3dvcmQ="});
-    return this.http.get(listOrderUrl, {headers});
+    return this.http.get(listOrderUrl);
   }
   model: any = {};
 
@@ -41,8 +40,7 @@ export class ApiService {
   }
 
   createOrder(delivery: Delivery) {
-    const headers = new HttpHeaders({ Authorization: "Basic YWRtaW46cGFzc3dvcmQ="});
-    return this.http.post(createOrder, delivery, {headers})
+    return this.http.post(createOrder, delivery)
   }
 
 }

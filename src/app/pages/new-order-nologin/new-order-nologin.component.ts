@@ -8,6 +8,8 @@ import { Receiver } from "../../shared/Receiver";
 import { Parcel } from "../../shared/Parcel";
 import {Dimension} from "../../shared/Dimension";
 import {TooltipPosition} from "@angular/material/tooltip";
+import {Router} from "@angular/router";
+import {Service} from "../../shared/Service";
 
 @Component({
   selector: 'app-new-order-nologin',
@@ -31,13 +33,15 @@ export class NewOrderNologinComponent implements OnInit {
   dimension: Dimension;
   panelOpenState: boolean;
   expandedV1: any;
+  service: Service;
 
-    constructor(private api: ApiService) {
+    constructor(private api: ApiService, private router: Router) {
       this.delivery = new Delivery();
       this.customer = new Customer();
       this.address = new Address();
       this.receiver = new Receiver();
       this.dimension = new Dimension();
+      this.service = new Service();
 
       this.parcel = new Array<Parcel>();
       this.tmpParcel = new Parcel();
@@ -51,6 +55,8 @@ export class NewOrderNologinComponent implements OnInit {
       this.delivery.customer = this.customer;
       this.panelOpenState = true;
       this.expandedV1 = true; // this is to control open/close operation
+
+      this.customer.service = new Service();
 
       this.oneHourPrice = '5€';
       this.twoHourPrice = '10€';
@@ -100,6 +106,7 @@ export class NewOrderNologinComponent implements OnInit {
     this.api.createOrder(this.delivery)
         .subscribe(data => {
           for (const d of (data as any)) {
+            this.router.navigate(['/order-recap-nologin']);
             console.log(d);
           }
         });
